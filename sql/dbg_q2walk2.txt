@@ -1,0 +1,128 @@
+﻿
+===== shop_freight =====
+syntax = "proto3";
+
+// ShopFreight message
+
+message ShopFreightInfo {
+  optional uint32 id = 1;
+  // 店铺ID
+  optional uint32 shop_id = 2;
+  // 模板名称
+  optional string name = 3;
+  // 发货时间
+  optional string delivery = 4;
+  // 是否包邮:0=自定义运费,1=卖家包邮
+  optional string isdelivery = 5;
+  // 计价方式:0=按件数,1=按重量,2=按体积
+  optional string valuation = 6;
+  // 创建时间
+  optional int64 createtime = 7;
+  // 更新时间
+  optional int64 updatetime = 8;
+  // 删除时间
+  optional int64 deletetime = 9;
+  // 状态
+  optional string status = 10;
+
+}
+
+message ShopFreightListResp {
+  uint64 total = 1;
+  repeated ShopFreightInfo data = 2;
+}
+
+// Calculate freight request
+message CalcFreightReq {
+  // 运费模板ID
+  uint32 freight_id = 1;
+  // 省份
+  string province = 2;
+  // 城市
+  string city = 3;
+  // 总数量(按计价方式:件数/重量/体积)
+  uint32 total = 4;
+}
+
+message CalcFreightResp {
+  // 运费
+  double freight = 1;
+  // 发货时间
+  string delivery = 2;
+  // 是否包邮
+  bool free = 3;
+}
+
+message ShopFreightListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional uint32 shop_id = 3;
+  optional string name = 4;
+  optional string delivery = 5;
+  optional string isdelivery = 6;
+  optional string valuation = 7;
+  optional int64 createtime = 8;
+  optional int64 updatetime = 9;
+  optional int64 deletetime = 10;
+  optional string status = 11;
+}
+
+
+service Wss {
+
+  // ShopFreight management
+  // group: shop_freight
+  rpc createShopFreight (ShopFreightInfo) returns (BaseIDUint32Resp);
+  // group: shop_freight
+  rpc updateShopFreight (ShopFreightInfo) returns (BaseResp);
+  // group: shop_freight
+  rpc getShopFreightList (ShopFreightListReq) returns (ShopFreightListResp);
+  // group: shop_freight
+  rpc getShopFreightById (IDUint32Req) returns (ShopFreightInfo);
+  // group: shop_freight
+  rpc deleteShopFreight (IDsUint32Req) returns (BaseResp);
+  // Calculate freight by template and region
+  // group: shop_freight
+  rpc calcFreight (CalcFreightReq) returns (CalcFreightResp);
+}
+===== withdraw =====
+NOT FOUND
+address.proto
+article.proto
+attachment.proto
+auth.proto
+brand.proto
+cart.proto
+category.proto
+category_attribute.proto
+comment.proto
+complaint.proto
+config.proto
+coupon.proto
+coupon_receive.proto
+feedback.proto
+finance.proto
+goods.proto
+goods_follow.proto
+goods_sku.proto
+goods_spu.proto
+groups_order.proto
+icon.proto
+link.proto
+merchant.proto
+order.proto
+order_address.proto
+order_goods.proto
+page.proto
+pay.proto
+pay_out_trade.proto
+refund.proto
+shop.proto
+shop_freight.proto
+shop_freight_data.proto
+shop_service.proto
+shop_settings.proto
+style.proto
+token.proto
+user.proto
+wss.proto

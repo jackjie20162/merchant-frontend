@@ -1,0 +1,203 @@
+﻿
+FILE \wanlshop-1.2.2-extended-php\library\AliyunSdk\aliyun-php-sdk-core\UnitTest\Ecs\Rquest\DescribeRegionsRequest.php
+\wanlshop-1.2.2-extended-php\bootstrap.js:55 var html = `<!-- 加载WanlChat 即时通讯 --> <div class="wanl-chat-service" id="wanl-chat" v-cloak> <!-- 消息提示 --> <div class="wanl-chat-mini-msg" v-if="isMsg"><span>{{msgData.name}}：</span> {{msgData.text}}</div> <!-- 全局按钮 --> <div class="wanl-chat-mini" @click="onList" v-if="isList"> <div class="label label-success" v-if="count > 0" v-cloak>{{count}}</div> <div class="water0" :style="{backgroundImage: 'url('+(isMsg ? msgData.avatar : '/assets/addons/wanlshop/img/common/chat_mini.png')+')'}"></div> <div class="water1"></div> <div class="water2"></div> <div class="water3"></div> </div> <!-- IM 右侧列表 --> <div class="wanl-chat-list" v-else> <div class="head"> <div class="title"> <div> <h3>客服：{{service.nickname}}</h3><span v-if="shopOnline == 1"><i class="fa fa-circle text-success margin-r-5"></i> H5在线</span><span v-else><i class="fa fa-circle text-gray margin-r-5"></i> IM连接异常</span> </div> <div style="font-size: 14px;"><span class="active" @click="onAudio" v-if="isAudio"><i class="fa fa-volume-up text-red"></i></span><span v-else @click="onAudio"><i class="fa fa-volume-off link-black"></i></span><span style="margin-left: 10px; font-size: 16px;" @click="onList"><i class="fa fa-close link-black"></i></span></div> </div> </div> <div class="list"> <div class="empty" v-if="chatlist.length == 0"> <div class="main"><img :src="cdnurl('/assets/addons/wanlshop/img/default/find_default3x.png')"> <p>没有找到任何联系人</p> </div> </div> <div class="item" v-for="(item, index) in chatlist" :key="index" @click="otChat(index, 'main')"> <div class="portrait"><img :src="cdnurl(item.avatar)"><span class="online"><i class="fa fa-circle text-success" v-if="item.isOnline == 1"></i><i class="fa fa-circle text-gray" v-else></i></span></div> <div class="main"> <div class="user"><span class="username text-cut">{{item.nickname}}</span><span class="time">{{timefriendly(item.createtime)}}</span></div> <div class="info text-cut"><span v-if="item.count > 0">[未读{{item.count}}条]</span><span v-html="item.content"></span></div> </div> </div> </div> </div><!-- 聊天窗口 --> <div class="wanl-chat" :class="{full: onFull}" :style="{left:screenWidth+'px', top:screenHeight+'px',}" ref="moveBtn" v-show="chatWindow" v-cloak> <div class="list"> <ul> <li v-for="(item, index) in wanlchat" :key="index" :class="{checked: chatSelect == index}" @click="onChat(index)"> <div class="portrait"><img :src="cdnurl(item.avatar)"><span class="badge bg-red" v-if="item.count > 0">{{item.count}}</span></div> <div class="user-msg"> <p>{{item.nickname}}</p> <div class="text-cut" v-html="item.content"></div> </div> <div class="list-close" @click.stop="delChat(index)"> <div class="hover"><span class="fa fa-times-circle"></span></div> </div> </li> </ul> </div> <div class="main" v-if="chatSelect != null"> <div class="msgHead" @mousedown="down" @touchstart="down" @mousemove="move" @touchmove="move" @mouseup="end" @touchend="end" @touchcancel="end"><img :src="cdnurl(wanlchat[chatSelect].avatar)"> <div><span class="name">{{wanlchat[chatSelect].nickname}}</span> <p v-if="wanlchat[chatSelect].isOnline == 1"><i class="fa fa-circle text-success"></i> 在线</p> <p v-else><i class="fa fa-circle text-gray"></i> 离线</p> </div><!-- 窗口操作 --><span class="layui-layer-setwin"> <block v-if="onFull"><a class="layui-layer-ico layui-layer-max layui-layer-maxmin" href="javascript:;" @click="full"></a></block> <block v-else><a class="layui-layer-min" href="javascript:;" @click="miniChat"><cite></cite></a><a class="layui-layer-ico layui-layer-max" href="javascript:;" @click="full"></a></block><a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;" @click="closeChat"></a> </span> </div> <div class="msgList" id="talk"> <ul> <li :class="{my: item.form.id == service.id}" v-for="(item, index) in chatContent" :key="index"> <div class="chat-user"><img :src="cdnurl(item.form.id == service.id ? service.avatar : item.form.avatar)"><cite><span>{{timefriendly(item.createtime)}}</span></cite></div><!-- 文字消息 --> <div class="chat-text" v-if="item.message.type == 'text'" v-html="item.message.content.text"></div><!-- 语音消息 --> <div class="chat-voice" v-if="item.message.type == 'voice'" @click="playVoice(item.message.content.url)"><span :style="{marginRight: item.message.content.length * 8 +'px'}"></span>{{item.message.content.length}} ”</div><!-- 图片消息 --> <div class="chat-img" v-if="item.message.type == 'img'"><a :href="item.message.content.url" target="_blank"><img :src="cdnurl(item.message.content.url)" data-tips-image></a></div> </li> </ul> </div> <form class="inputBox" id="form"> <div class="tool"><span class="fa fa-smile-o" @click="toggleBox"></span><label for="upImage" class="fa fa-picture-o upImage"></label><input type="file" id="upImage" @change="chatImage" style="display:none"></div> <div class="input"><textarea id="content" placeholder="请输入消息" v-model="textarea" @keyup.ctrl.enter="submit" autofocus></textarea></div> <div class="operation"><button type="button" class="btn btn-danger" @click="submit">发送 Ctrl+Enter</button></div> </form> <div class="box-container" v-if="showBox" @click.self="toggleBox"> </div> <div class="wanl-emoji" v-if="showBox"> <div class="title"> <div> {{TabCur}} </div> </div> <div class="subject" v-for="(emoji, groups) in emojiList.groups" :key="groups" v-if="TabCur == groups"> <div class="item"><span v-for="(item, index) in emoji" :key="index" @click="addEmoji(item.value)"><img :src="item.url"></span></div> </div> <div class="emojiNav"> <div :class="item == TabCur ? 'emojibg' : ''" class="item" v-for="(item, index) in emojiList.categories" :key="index" :data-id="item" @click="tabSelect"><img :src="emojiList.groups[item][0].url"></div> </div> </div> </div> </div> </div>`;
+\wanlshop-1.2.2-extended-php\bootstrap.js:74 textarea: '', // 编辑框
+\wanlshop-1.2.2-extended-php\bootstrap.js:121 // 				area: '400px;',
+\wanlshop-1.2.2-extended-php\bootstrap.js:428 if (!this.textarea) {
+\wanlshop-1.2.2-extended-php\bootstrap.js:432 text: this.textarea
+\wanlshop-1.2.2-extended-php\bootstrap.js:435 this.textarea = ''; //清空输入框
+\wanlshop-1.2.2-extended-php\bootstrap.js:582 this.textarea += em;
+\wanlshop-1.2.2-extended-php\config.php:373 'regionId' => 'cn-shanghai'
+\wanlshop-1.2.2-extended-php\application\admin\controller\wanlshop\Auth.php:92 $shop->city = $row['city'];
+\wanlshop-1.2.2-extended-php\application\admin\lang\zh-cn\wanlshop\address.php:12 'Province'          => '省份',
+\wanlshop-1.2.2-extended-php\application\admin\lang\zh-cn\wanlshop\address.php:13 'City'              => '城市',
+\wanlshop-1.2.2-extended-php\application\admin\lang\zh-cn\wanlshop\address.php:14 'Citycode'          => '市级代码',
+\wanlshop-1.2.2-extended-php\application\admin\lang\zh-cn\wanlshop\address.php:15 'District'          => '区/县',
+\wanlshop-1.2.2-extended-php\application\admin\lang\zh-cn\wanlshop\advert.php:20 'City'            => '投放城市',
+\wanlshop-1.2.2-extended-php\application\admin\lang\zh-cn\wanlshop\auth.php:21 'City'       => '省市',
+\wanlshop-1.2.2-extended-php\application\admin\lang\zh-cn\wanlshop\shop.php:21 'City'            => '省市',
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\add.html:28 <label class="control-label col-xs-12 col-sm-2">{:__('Province')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\add.html:30 <input id="c-province" data-rule="required" class="form-control" name="row[province]" type="text">
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\add.html:34 <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\add.html:36 <input id="c-city" data-rule="required" class="form-control" name="row[city]" type="text">
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\add.html:40 <label class="control-label col-xs-12 col-sm-2">{:__('Citycode')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\add.html:42 <input id="c-citycode" data-rule="required" class="form-control" name="row[citycode]" type="number">
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\add.html:46 <label class="control-label col-xs-12 col-sm-2">{:__('District')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\add.html:48 <input id="c-district" data-rule="required" class="form-control" name="row[district]" type="text">
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\edit.html:28 <label class="control-label col-xs-12 col-sm-2">{:__('Province')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\edit.html:30 <input id="c-province" data-rule="required" class="form-control" name="row[province]" type="text" value="{$row.province|htmlentities}">
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\edit.html:34 <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\edit.html:36 <input id="c-city" data-rule="required" class="form-control" name="row[city]" type="text" value="{$row.city|htmlentities}">
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\edit.html:40 <label class="control-label col-xs-12 col-sm-2">{:__('Citycode')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\edit.html:42 <input id="c-citycode" data-rule="required" class="form-control" name="row[citycode]" type="number" value="{$row.citycode|htmlentities}">
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\edit.html:46 <label class="control-label col-xs-12 col-sm-2">{:__('District')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\address\edit.html:48 <input id="c-district" data-rule="required" class="form-control" name="row[district]" type="text" value="{$row.district|htmlentities}">
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\advert\add.html:65 <textarea id="c-content" class="form-control editor" rows="5" name="row[content]" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\advert\add.html:69 <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\advert\add.html:71 <div class='control-relative'><input id="c-city" class="form-control" data-toggle="city-picker" name="row[city]" type="text" value=""></div>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\advert\edit.html:65 <textarea id="c-content" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\advert\edit.html:69 <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\advert\edit.html:71 <div class='control-relative'><input id="c-city" class="form-control" data-toggle="city-picker" name="row[city]" type="text" value="{$row.city|htmlentities}"></div>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\article\add.html:34 <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\article\edit.html:36 <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\attribute\add.html:16 <textarea name="row[value]" class="form-control hide" cols="30" rows="5"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\attribute\edit.html:16 <textarea name="row[value]" class="form-control hide" cols="30" rows="5">{$row.value|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\auth\detail.html:58 <td>{:__('City')}</td>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\auth\detail.html:59 <td>{$row.city|htmlentities}</td>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\auth\refuse.html:10 <textarea rows="5" cols="20" id="c-refuse" class="form-control" name="row[refuse]" > {$row.refuse|htmlentities} </textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\brand\add.html:26 <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\brand\edit.html:38 <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\category\create.html:20 <textarea id="c-name" data-rule="required" class="form-control" name="row[name]" rows="10" cols="30"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\category\goods.html:19 <a href="wanlshop/attribute" class="btn btn-danger btn-dialog" data-area=["90%","80%"] title="{:__('类目属性')}" ><i class="fa fa-list-ol"></i> {:__('类目属性')}</a>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\category\goods.html:20 <a href="wanlshop/goods" class="btn btn-info btn-dialog" data-area=["90%","80%"] title="{:__('全部商品')}" ><i class="fa fa-shopping-bag"></i> {:__('全部商品')}</a>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\category\goods.html:21 <a href="wanlshop/groups/goods" class="btn btn-warning btn-dialog" data-area=["90%","80%"] title="{:__('全部拼团')}" ><i class="fa fa-shopping-bag"></i> {:__('全部拼团')}</a>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\client\config.html:1841 {:Form::selectpicker('row[video][regionId]', ['cn-shanghai'=>'上海地域', 'cn-beijing'=>'北京地域'], $wanlshop.video.regionId, ['data-rule'=>'required'])}
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\comment\add.html:42 <textarea id="c-content" class="form-control editor" rows="5" name="row[content]" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\comment\add.html:48 <textarea id="c-tag" data-rule="required" class="form-control " rows="5" name="row[tag]" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\comment\add.html:54 <textarea id="c-suk" data-rule="required" class="form-control " rows="5" name="row[suk]" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\comment\edit.html:36 <textarea id="c-content" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\comment\edit.html:42 <textarea id="c-tag" data-rule="required" class="form-control " rows="5" name="row[tag]" cols="50">{$row.tag|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\comment\edit.html:48 <textarea id="c-suk" data-rule="required" class="form-control " rows="5" name="row[suk]" cols="50">{$row.suk|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\comments\edit.html:12 <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\complaint\detail.html:204 <textarea id="c-receipt" data-rule="required" class="form-control " rows="5" name="row[receipt]" cols="50">{$row.receipt|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\feedback\detail.html:68 <textarea id="c-receipt" data-rule="required" class="form-control" rows="5" name="row[receipt]" cols="50">{$row.receipt|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\goods\add.html:96 <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\goods\edit.html:98 <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\groups\index.html:20 <!--<a href="wanlshop/groups/goods" class="btn btn-warning btn-dialog" data-area=["90%","80%"] title="{:__('全部拼团')}" ><i class="fa fa-shopping-bag"></i> {:__('拼团商品')}</a>-->
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\groups\order.html:103 <a href="wanlshop/groups/detail/group_no/<%=goods.group_no%>" class="btn btn-xs btn-info btn-dialog" title="查看普通拼团" data-area=["420px","700px"]><i class="fa fa-users"></i> 普通拼团</a>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\groups\order.html:105 <a href="wanlshop/groups/detail/group_no/<%=goods.group_no%>" class="btn btn-xs btn-success btn-dialog" title="查看阶梯拼团" data-area=["420px","700px"]><i class="fa fa-users"></i> 阶梯拼团</a>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\live\edit.html:20 <textarea id="c-content" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\page\index.html:20 <a href="javascript:;" data-area=["500px","360px"] class="btn btn-success btn-add {:$auth->check('wanlshop/page/add')?'':'hide'}" title="{:__('Add')}" ><i class="fa fa-plus"></i> {:__('Add')}</a>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\page\template.html:22 data-area=["500px","400px"]
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\refund\refuse.html:10 {:Form::textarea('row[refund_content]', '', ['data-rule'=>'required'])}
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\shop\add.html:72 <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\shop\add.html:74 <div class='control-relative'><input id="c-city" data-rule="required" class="form-control" data-toggle="city-picker" name="row[city]" type="text" value=""></div>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\shop\edit.html:72 <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\shop\edit.html:74 <div class='control-relative'><input id="c-city" data-rule="required" class="form-control" data-toggle="city-picker" name="row[city]" type="text" value="{$row.city|htmlentities}"></div>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\shop\index.html:28 <a href="wanlshop/goods" class="btn btn-info btn-dialog" data-area=["90%","80%"] title="{:__('全部商品')}" ><i class="fa fa-shopping-bag"></i> {:__('全部商品')}</a>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\shop\index.html:29 <a href="wanlshop/groups/goods" class="btn btn-warning btn-dialog" data-area=["90%","80%"] title="{:__('全部拼团')}" ><i class="fa fa-shopping-bag"></i> {:__('全部拼团')}</a>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\version\add.html:15 <textarea id="c-content" data-rule="required" class="form-control" rows="5" name="row[content]" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\version\edit.html:14 <textarea id="c-content" data-rule="required" class="form-control" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\wechat\config\add.html:2 <input type="hidden" name="row[mode]" value="textarea" />
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\wechat\config\add.html:22 <textarea id="c-value" class="form-control " rows="15" name="row[value]"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\wechat\config\edit.html:2 <input type="hidden" name="row[mode]" value="textarea" />
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\wechat\config\edit.html:18 <textarea id="c-value" class="form-control " rows="15" name="row[value]">{$row.value|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\wechat\response\add.html:11 <textarea class="form-control" id="remark" name="row[remark]"></textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\wechat\response\edit.html:18 <textarea class="form-control" id="remark" name="row[remark]">{$row.remark|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\admin\view\wanlshop\withdraw\refuse.html:10 <textarea rows="5" cols="20" id="c-memo" class="form-control" name="row[memo]" > {$row.memo|htmlentities} </textarea>
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Address.php:27 ->field('id,user_id,adcode,address,address_name,city,citycode,country,default,district,formatted_address,location,mobile,name,province')
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Chat.php:43 ->field('id,user_id,shopname,avatar,state,level,city,like,isself,createtime')
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Common.php:26 'area', 'adverts','searchList','setSearch','about', 'thumbnail', 'upload', 'qrcode', 'mpQrcode'];
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Common.php:144 public function area()
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Common.php:150 foreach (collection(model('app\common\model\Area')->field('id,pid,name,code,zip,level')->cache(true, $cacheTime)->select())->toArray() as $vo) {
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Common.php:159 $packData[$val['pid']]['area'][] = &$packData[$key];
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Common.php:161 $packData[$val['pid']]['city'][] = &$packData[$key];
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Order.php:351 'address' => $address['province'].'/'.$address['city'].'/'.$address['district'].'/'.$address['address'],
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Order.php:519 ->field('id,name,mobile,province,city,district,address')
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Order.php:549 $goods['freight'] = $this->freight($goods['freight_id'], $sku['weigh'], $post['number'], $address['city']);
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Order.php:757 $freight = $this->freight($goods['freight_id'], $sku['weigh'], $data['number'], $address['city']);
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Order.php:890 'address' => $address['province'].'/'.$address['city'].'/'.$address['district'].'/'.$address['address'],
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Order.php:940 * @param string $city  邮递城市
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Order.php:942 private function freight($id = null, $weigh = null, $number = 0, $city = '南山区')
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Order.php:955 ['EXP', Db::raw('FIND_IN_SET('.model('app\common\model\Area')->get(['name' => $city])->id.', citys)')],
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Product.php:50 $row->getRelation('shop')->visible(['city', 'shopname', 'state', 'isself']);
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Product.php:253 $goods->shop->visible(['shopname','service_ids','avatar','city','like','score_describe','score_service','score_logistics']);
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Product.php:591 * @param string $city  邮递城市
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Product.php:594 private function freight($id = null, $weigh = 0, $city = '北京', $number = 1)
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Product.php:604 ['EXP', Db::raw('FIND_IN_SET('.model('app\common\model\Area')->get(['name' => $city])->id.', citys)')],
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Video.php:31 $vod = new Vod($config['video']['regionId'], $config['video']['accessKeyId'], $config['video']['accessKeySecret']);
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\Wechat.php:72 ->buildConfig(['updateAppMessageShareData','updateTimelineShareData','editAddress','chooseImage','onMenuShareAppMessage','onMenuShareTimeline','chooseImage','previewImage','uploadImage','downloadImage','chooseWXPay'], false, false, false);
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\find\Find.php:389 $vod = new Video($config['video']['regionId'], $config['video']['accessKeyId'], $config['video']['accessKeySecret']);
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\find\User.php:114 ->field('id, user_id, shopname, avatar, state, level, city, isself')
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\find\User.php:152 ->field('id, user_id, shopname, avatar, state, level, city, isself')
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Order.php:288 'address' => $address['province'].'/'.$address['city'].'/'.$address['district'].'/'.$address['address'],
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Order.php:533 ->field('id,name,mobile,province,city,district,address')
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Order.php:592 $goods['freight'] = $this->freight($goods['freight_id'], $sku['weigh'], $post['number'], $address['city']);
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Order.php:883 $freight = $this->freight($goods['freight_id'], $sku['weigh'], $data['number'], $address['city']);
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Order.php:969 'address' => $address['province'].'/'.$address['city'].'/'.$address['district'].'/'.$address['address'],
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Order.php:1088 * @param string $city  邮递城市
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Order.php:1090 private function freight($id = null, $weigh = null, $number = 0, $city = null)
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Order.php:1103 ['EXP', Db::raw('FIND_IN_SET('.model('app\common\model\Area')->get(['name' => $city])->id.', citys)')],
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Product.php:101 $goods->shop->visible(['shopname','service_ids','avatar','city','like','score_describe','score_service','score_logistics']);
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Product.php:373 * @param string $city  邮递城市
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Product.php:376 private function freight($id = null, $weigh = 0, $city = '北京', $number = 1)
+\wanlshop-1.2.2-extended-php\application\api\controller\wanlshop\groups\Product.php:386 ['EXP', Db::raw('FIND_IN_SET('.model('app\common\model\Area')->get(['name' => $city])->id.', citys)')],
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Entry.php:78 $shop->city = $row['city'];
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Find.php:179 $vod = new Video($config['video']['regionId'], $config['video']['accessKeyId'], $config['video']['accessKeySecret']);
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Freight.php:25 protected $area = null;
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Freight.php:32 if(!db()->query('SHOW TABLES LIKE '."'".config('database.prefix')."area'")) {
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Freight.php:36 $this->area = collection(model('app\common\model\Area')->where('level','in',[1,2])->field('id,pid,name,level')->select())->toArray();
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Freight.php:37 $this->assignconfig('area', $this->getChild(0));
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Freight.php:138 'province' => $params['rule']['province'][$key],
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Freight.php:139 'citys' => $params['rule']['citys'][$key],
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Freight.php:204 'province' => $params['rule']['province'][$key],
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Freight.php:205 'citys' => $params['rule']['citys'][$key],
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Freight.php:371 foreach ($this->area as $key => $value) {
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Freight.php:377 $newarr[$value['id']]['city'] = $this->getChild($value['id']);
+\wanlshop-1.2.2-extended-php\application\index\controller\wanlshop\Shop.php:81 ->allowField(['avatar','shopname','keywords','description','service_ids','service_ids','city','bio'])
+\wanlshop-1.2.2-extended-php\application\index\lang\zh-cn\wanlshop\shop.php:14 'City'            => '店铺所在地',
+\wanlshop-1.2.2-extended-php\application\index\model\wanlshop\ShopFreightData.php:23 public function getProvinceAttr($value, $data)
+\wanlshop-1.2.2-extended-php\application\index\model\wanlshop\ShopFreightData.php:28 public function getCityAttr($value, $data)
+\wanlshop-1.2.2-extended-php\application\index\view\layout\wanlshop.html:288 <div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.2); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 897px;"></div>
+\wanlshop-1.2.2-extended-php\application\index\view\layout\wanlshop.html:289 <div class="slimScrollRail" style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+\wanlshop-1.2.2-extended-php\application\index\view\layout\wanlshop.html:528 <textarea id="content" placeholder="请输入消息" v-model="textarea" @keyup.ctrl.enter="submit" autofocus></textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\brand\add.html:42 <textarea id="c-content" class="form-control editor" rows="5" name="row[content]" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\brand\edit.html:44 <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\comment\edit.html:36 <textarea id="c-content" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\comment\edit.html:42 <textarea id="c-tag" data-rule="required" class="form-control " rows="5" name="row[tag]" cols="50">{$row.tag|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\comment\edit.html:48 <textarea id="c-suk" data-rule="required" class="form-control " rows="5" name="row[suk]" cols="50">{$row.suk|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\config\index.html:79 <textarea name="row[welcome]" class="form-control" rows="5" data-tip="空,表示不使用欢迎消息">{$row.welcome|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\config\index.html:281 <textarea name="row[sendAddr]" class="form-control" rows="5" data-tip="" data-rule="required">{$row.sendAddr|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\config\index.html:340 <textarea name="row[returnAddr]" class="form-control" rows="5" data-tip="" data-rule="required">{$row.returnAddr|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\coupon\add.html:161 <textarea id="c-content" class="form-control editor" rows="5" name="row[content]" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\coupon\edit.html:161 <textarea id="c-content" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\entry\stepfour.html:71 <td>{$entry.city|htmlentities}</td>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\entry\stepthree.html:70 {:Form::textarea('bio', $entry.bio, ['data-rule'=>'required'])}
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\entry\stepthree.html:76 {:Form::citypicker('city', $entry.city, ['data-rule'=>'required'])}
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\find\add.html:216 <textarea v-model="params.content" class="details form-control" data-rule="required" rows="4"
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\find\add.html:217 placeholder="点击编辑给视频添加文案，提升曝光率获取更多赞赏~" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\find\add.html:241 <textarea v-model="params.content" class="form-control subject" data-rule="required" rows="4"
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\find\add.html:242 :placeholder="`编辑${typeList[params.type]}文案~`" cols="50"></textarea>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:40 .choice .subject .citys {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:49 .choice .subject .citys>i.jt {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:59 .choice .subject .citys>i.jt i {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:69 .choice .subject .citys .row-div {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:74 .choice .subject .citys .row-div label span {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:80 .choice .subject .choice-tooltips:hover .citys {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:105 .choice .city-empty{
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:180 <span v-if="item.citys.length == 407">全国</span>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:181 <template v-else v-for="(province, index) in item.treeData">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:182 <span>{{ province.name }}</span>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:183 <template v-if="!province.isAllCitys">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:185 <template v-for="(city, index) in province.citys">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:186 <span>{{ city.name }}</span><span v-if="(index + 1) < province.citys.length">、</span>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:196 <input type="hidden" name="row[rule][province][]" :value="item.province">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:197 <input type="hidden" name="row[rule][citys][]" :value="item.citys">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:206 <a class="btn btn-default" href="javascript:void(0);" @click.stop="onAddRegionEvent">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:220 <a class="city-empty" href="javascript:void(0);" @click="onCheckAll(false)">清空</a>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:224 <div v-for="item in regions" v-if="!isPropertyExist(item.id, disable.treeData) || !disable.treeData[item.id].isAllCitys" class="choice-tooltips">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:226 <input type="checkbox" class="province" :value="item.id" :checked="inArray(item.id, checked.province)" @change="onCheckedProvince">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:227 <span class="province_name">{{ item.name }}</span><span class="ratio"></span>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:229 <div class="citys">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:232 <p v-for="city in item.city" v-if="!inArray(city.id, disable.citys)">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:234 <input class="city" type="checkbox" :value="city.id" :checked="inArray(city.id, checked.citys)" @change="onCheckedCity($event, item.id)">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\add.html:235 <span>{{ city.name }}</span>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:40 .choice .subject .citys {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:49 .choice .subject .citys>i.jt {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:59 .choice .subject .citys>i.jt i {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:69 .choice .subject .citys .row-div {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:74 .choice .subject .citys .row-div label span {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:80 .choice .subject .choice-tooltips:hover .citys {
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:105 .choice .city-empty{
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:182 <span v-if="item.citys.length == 407">全国</span>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:183 <template v-else v-for="(province, index) in item.treeData">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:184 <span>{{ province.name }}</span>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:185 <template v-if="!province.isAllCitys">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:187 <template v-for="(city, index) in province.citys">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:188 <span>{{ city.name }}</span><span v-if="(index + 1) < province.citys.length">、</span>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:198 <input type="hidden" name="row[rule][province][]" :value="item.province">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:199 <input type="hidden" name="row[rule][citys][]" :value="item.citys">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:208 <a class="btn btn-default" href="javascript:void(0);" @click.stop="onAddRegionEvent">
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:222 <a class="city-empty" href="javascript:void(0);" @click="onCheckAll(false)">清空</a>
+\wanlshop-1.2.2-extended-php\application\index\view\wanlshop\freight\edit.html:226 <div v-for="item in regions" v-if="!isPropertyExist(item.id, disable.treeData) || !disable.treeData[item.id].isAllCitys" class="choice-tooltips">
+DONE

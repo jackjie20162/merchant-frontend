@@ -1,0 +1,21 @@
+﻿
+   Id ProcessName StartTime         
+   -- ----------- ---------         
+16720 node        2026/8/16 11:25:48
+24308 node        2026/8/16 14:19:06
+24740 node        2026/8/16 11:25:49
+27100 node        2026/8/16 14:19:07
+27368 node        2026/8/16 11:25:47
+28908 node        2026/8/16 11:25:50
+31472 node        2026/8/16 11:25:49
+31536 node        2026/8/16 11:25:50
+
+
+
+  [32m[1mVITE[22m v8.2.1[39m  [2mready in [0m[1m409[22m[2m[0m ms[22m
+
+  [32m鉃?[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5174[22m/[39m
+[2m  [32m鉃?[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m[32m  鉃?[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m14:19:28[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m14:19:28[22m [36m[1m[vite][22m[39m server restarted.

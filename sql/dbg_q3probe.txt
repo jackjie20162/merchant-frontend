@@ -1,0 +1,153 @@
+﻿
+DIR D:\go_work\simple-admin\wanshop
+DIR D:\go_work\simple-admin\wanshop-api
+DIR D:\go_work\simple-admin\wanshop-app
+DIR D:\go_work\simple-admin\wanshop-rpc
+===== coupon list logic =====
+coupon list logic not found
+===== freight tpl list logic =====
+===== proto list reqs =====
+wss.proto:688
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional int32 shop_id = 3;
+  optional string type = 4;
+  optional string name = 5;
+  optional string userlevel = 6;
+  optional string usertype = 7;
+  optional double price = 8;
+  optional float discount = 9;
+  optional double limit = 10;
+  optional string rangetype = 11;
+  optional string range = 12;
+wss.proto:2139
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional uint32 shop_id = 3;
+  optional string name = 4;
+  optional string delivery = 5;
+  optional string isdelivery = 6;
+  optional string valuation = 7;
+  optional int64 createtime = 8;
+  optional int64 updatetime = 9;
+  optional int64 deletetime = 10;
+  optional string status = 11;
+}
+wss.proto:2456
+  //  用户ID
+  uint32 user_id = 1;
+  //  状态:1=未使用,2=已使用,3=已过期
+  string state = 2;
+}
+
+message UserInfo {
+  optional uint32 id = 1;
+  //  组别ID
+  optional uint32 group_id = 2;
+  //  用户名
+  optional string username = 3;
+wss.proto:2778
+  //  group: coupon
+  rpc getCouponById(IDUint32Req) returns (CouponInfo);
+  //  group: coupon
+  rpc deleteCoupon(IDsUint32Req) returns (BaseResp);
+  //  User draw coupon (return coupon receive id)
+  //  group: coupon
+  rpc drawCoupon(DrawCouponReq) returns (BaseIDUint32Resp);
+  //  CouponReceive management
+  //  group: coupon_receive
+  rpc createCouponReceive(CouponReceiveInfo) returns (BaseIDUint32Resp);
+  //  group: coupon_receive
+  rpc updateCouponReceive(CouponReceiveInfo) returns (BaseResp);
+wss.proto:2799
+  //  Use coupon: bind receive record to order
+  //  group: coupon_receive
+  rpc useCouponReceive(UseCouponReq) returns (BaseResp);
+  //  Restore coupon to unused (for cancel order)
+  //  group: coupon_receive
+  rpc restoreCouponReceive(IDUint32Req) returns (BaseResp);
+  //  Feedback management (意见反馈)
+  //  group: feedback
+  rpc createFeedback(FeedbackInfo) returns (BaseIDUint32Resp);
+  //  group: feedback
+  rpc updateFeedback(FeedbackInfo) returns (BaseResp);
+  //  group: feedback
+wss.proto:3098
+  //  group: shop_freight
+  rpc getShopFreightById(IDUint32Req) returns (ShopFreightInfo);
+  //  group: shop_freight
+  rpc deleteShopFreight(IDsUint32Req) returns (BaseResp);
+  //  Calculate freight by template and region
+  //  group: shop_freight
+  rpc calcFreight(CalcFreightReq) returns (CalcFreightResp);
+  //  ShopFreightData management
+  //  group: shop_freight_data
+  rpc createShopFreightData(ShopFreightDataInfo) returns (BaseIDUint32Resp);
+  //  group: shop_freight_data
+  rpc updateShopFreightData(ShopFreightDataInfo) returns (BaseResp);
+coupon.proto:65
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional int32 shop_id = 3;
+  optional string type = 4;
+  optional string name = 5;
+  optional string userlevel = 6;
+  optional string usertype = 7;
+  optional double price = 8;
+  optional float discount = 9;
+  optional double limit = 10;
+  optional string rangetype = 11;
+  optional string range = 12;
+coupon.proto:112
+  // group: coupon
+  rpc getCouponById (IDUint32Req) returns (CouponInfo);
+  // group: coupon
+  rpc deleteCoupon (IDsUint32Req) returns (BaseResp);
+  // User draw coupon (return coupon receive id)
+  // group: coupon
+  rpc drawCoupon (DrawCouponReq) returns (BaseIDUint32Resp);
+}
+coupon_receive.proto:91
+  // 用户ID
+  uint32 user_id = 1;
+  // 状态:1=未使用,2=已使用,3=已过期
+  string state = 2;
+}
+
+// Use coupon request (bind to order)
+message UseCouponReq {
+  // 领取记录ID
+  uint32 receive_id = 1;
+  // 订单ID
+  uint32 order_id = 2;
+coupon_receive.proto:121
+  // Use coupon: bind receive record to order
+  // group: coupon_receive
+  rpc useCouponReceive (UseCouponReq) returns (BaseResp);
+  // Restore coupon to unused (for cancel order)
+  // group: coupon_receive
+  rpc restoreCouponReceive (IDUint32Req) returns (BaseResp);
+}
+shop_freight.proto:54
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional uint32 shop_id = 3;
+  optional string name = 4;
+  optional string delivery = 5;
+  optional string isdelivery = 6;
+  optional string valuation = 7;
+  optional int64 createtime = 8;
+  optional int64 updatetime = 9;
+  optional int64 deletetime = 10;
+  optional string status = 11;
+}
+shop_freight.proto:77
+  // group: shop_freight
+  rpc getShopFreightById (IDUint32Req) returns (ShopFreightInfo);
+  // group: shop_freight
+  rpc deleteShopFreight (IDsUint32Req) returns (BaseResp);
+  // Calculate freight by template and region
+  // group: shop_freight
+  rpc calcFreight (CalcFreightReq) returns (CalcFreightResp);
+}
+DONE

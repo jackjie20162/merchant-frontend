@@ -1,0 +1,32 @@
+﻿
+Field	Type	Null	Key	Default	Extra
+id	int unsigned	NO	PRI	NULL	auto_increment
+shop_id	int	NO		0	
+type	enum('reduction','discount','shipping','vip')	NO		reduction	
+name	varchar(50)	NO			
+userlevel	int unsigned	YES		0	
+usertype	enum('reduction','discount')	YES		reduction	
+price	decimal(10,2) unsigned	YES		0.00	
+discount	decimal(2,1) unsigned	YES		0.0	
+limit	decimal(10,2) unsigned	NO		0.00	
+rangetype	enum('all','goods','category')	NO		all	
+range	varchar(100)	YES			
+pretype	enum('appoint','fixed')	NO		appoint	
+validity	int unsigned	YES		0	
+startdate	date	YES		NULL	
+enddate	date	YES		NULL	
+drawlimit	int unsigned	NO		0	
+grant	varchar(10)	NO		-1	
+alreadygrant	int unsigned	NO		0	
+surplus	int unsigned	YES		0	
+content	text	YES		NULL	
+usenum	int unsigned	YES		0	
+invalid	int unsigned	YES		0	
+createtime	bigint	YES		NULL	
+updatetime	bigint	YES		NULL	
+deletetime	bigint	YES		NULL	
+===== freight rows after cleanup =====
+c
+0
+c
+0

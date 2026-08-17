@@ -1,0 +1,8 @@
+﻿
+LocalPort OwningProcess
+--------- -------------
+     5173         29496
+
+
+root=200
+{"code":0,"msg":"pong"}

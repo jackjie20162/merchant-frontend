@@ -1,0 +1,16 @@
+﻿Field	Type	Null	Key	Default	Extra
+id	int unsigned	NO	PRI	NULL	auto_increment
+user_id	int unsigned	NO	MUL	0	
+shop_id	int unsigned	NO	MUL	0	
+money	double	NO		0	
+handingfee	double	NO		0	
+taxes	double	NO		0	
+type	varchar(20)	NO			
+account	varchar(255)	NO			
+memo	varchar(255)	YES		NULL	
+orderid	varchar(64)	NO			
+transactionid	varchar(64)	NO			
+status	varchar(20)	NO	MUL	created	
+transfertime	bigint	YES		NULL	
+createtime	bigint	YES		NULL	
+updatetime	bigint	YES		NULL	

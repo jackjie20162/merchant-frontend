@@ -1,0 +1,2 @@
+﻿Field	Type	Null	Key	Default	Extra
+status	enum('normal','hidden')	NO		normal	

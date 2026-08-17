@@ -1,0 +1,348 @@
+﻿
+===== wssclient methods =====
+func (m *defaultWss) CreateAddress(ctx context.Context, in *AddressInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateAddress(ctx context.Context, in *AddressInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetAddressList(ctx context.Context, in *AddressListReq, opts ...grpc.CallOption) (*AddressListResp, error) {
+func (m *defaultWss) GetAddressById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*AddressInfo, error) {
+func (m *defaultWss) DeleteAddress(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) SetDefaultAddress(ctx context.Context, in *SetDefaultAddressReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetUserAddressList(ctx context.Context, in *UserAddressListReq, opts ...grpc.CallOption) (*AddressListResp, error) {
+func (m *defaultWss) DeleteUserAddress(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateArticle(ctx context.Context, in *ArticleInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateArticle(ctx context.Context, in *ArticleInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetArticleList(ctx context.Context, in *ArticleListReq, opts ...grpc.CallOption) (*ArticleListResp, error) {
+func (m *defaultWss) GetArticleById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*ArticleInfo, error) {
+func (m *defaultWss) DeleteArticle(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateAttachment(ctx context.Context, in *AttachmentInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) GetAttachmentList(ctx context.Context, in *AttachmentListReq, opts ...grpc.CallOption) (*AttachmentListResp, error) {
+func (m *defaultWss) GetAttachmentById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*AttachmentInfo, error) {
+func (m *defaultWss) DeleteAttachment(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateAuth(ctx context.Context, in *AuthInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateAuth(ctx context.Context, in *AuthInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetAuthList(ctx context.Context, in *AuthListReq, opts ...grpc.CallOption) (*AuthListResp, error) {
+func (m *defaultWss) GetAuthById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*AuthInfo, error) {
+func (m *defaultWss) DeleteAuth(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateBrand(ctx context.Context, in *BrandInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateBrand(ctx context.Context, in *BrandInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetBrandList(ctx context.Context, in *BrandListReq, opts ...grpc.CallOption) (*BrandListResp, error) {
+func (m *defaultWss) GetBrandById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*BrandInfo, error) {
+func (m *defaultWss) DeleteBrand(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateCart(ctx context.Context, in *CartInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateCart(ctx context.Context, in *CartInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetCartList(ctx context.Context, in *CartListReq, opts ...grpc.CallOption) (*CartListResp, error) {
+func (m *defaultWss) GetCartById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*CartInfo, error) {
+func (m *defaultWss) DeleteCart(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) AddCart(ctx context.Context, in *CartInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) ClearUserCart(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateCategory(ctx context.Context, in *CategoryInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateCategory(ctx context.Context, in *CategoryInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetCategoryList(ctx context.Context, in *CategoryListReq, opts ...grpc.CallOption) (*CategoryListResp, error) {
+func (m *defaultWss) GetCategoryById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*CategoryInfo, error) {
+func (m *defaultWss) DeleteCategory(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetCategoryTree(ctx context.Context, in *CategoryTreeReq, opts ...grpc.CallOption) (*CategoryTreeResp, error) {
+func (m *defaultWss) CreateCategoryAttribute(ctx context.Context, in *CategoryAttributeInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateCategoryAttribute(ctx context.Context, in *CategoryAttributeInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetCategoryAttributeList(ctx context.Context, in *CategoryAttributeListReq, opts ...grpc.CallOption) (*CategoryAttributeListResp, error) {
+func (m *defaultWss) GetCategoryAttributeById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*CategoryAttributeInfo, error) {
+func (m *defaultWss) DeleteCategoryAttribute(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateComment(ctx context.Context, in *CommentInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateComment(ctx context.Context, in *CommentInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetCommentList(ctx context.Context, in *CommentListReq, opts ...grpc.CallOption) (*CommentListResp, error) {
+func (m *defaultWss) GetCommentById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*CommentInfo, error) {
+func (m *defaultWss) DeleteComment(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateComplaint(ctx context.Context, in *ComplaintInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateComplaint(ctx context.Context, in *ComplaintInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetComplaintList(ctx context.Context, in *ComplaintListReq, opts ...grpc.CallOption) (*ComplaintListResp, error) {
+func (m *defaultWss) GetComplaintById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*ComplaintInfo, error) {
+func (m *defaultWss) DeleteComplaint(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetConfig(ctx context.Context, in *ConfigInfo, opts ...grpc.CallOption) (*ConfigInfo, error) {
+func (m *defaultWss) UpdateConfig(ctx context.Context, in *ConfigInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateCoupon(ctx context.Context, in *CouponInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateCoupon(ctx context.Context, in *CouponInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetCouponList(ctx context.Context, in *CouponListReq, opts ...grpc.CallOption) (*CouponListResp, error) {
+func (m *defaultWss) GetCouponById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*CouponInfo, error) {
+func (m *defaultWss) DeleteCoupon(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) DrawCoupon(ctx context.Context, in *DrawCouponReq, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) CreateCouponReceive(ctx context.Context, in *CouponReceiveInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateCouponReceive(ctx context.Context, in *CouponReceiveInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetCouponReceiveList(ctx context.Context, in *CouponReceiveListReq, opts ...grpc.CallOption) (*CouponReceiveListResp, error) {
+func (m *defaultWss) GetCouponReceiveById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*CouponReceiveInfo, error) {
+func (m *defaultWss) DeleteCouponReceive(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetUserCouponList(ctx context.Context, in *UserCouponListReq, opts ...grpc.CallOption) (*CouponReceiveListResp, error) {
+func (m *defaultWss) UseCouponReceive(ctx context.Context, in *UseCouponReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) RestoreCouponReceive(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateFeedback(ctx context.Context, in *FeedbackInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateFeedback(ctx context.Context, in *FeedbackInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetFeedbackList(ctx context.Context, in *FeedbackListReq, opts ...grpc.CallOption) (*FeedbackListResp, error) {
+func (m *defaultWss) GetFeedbackById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*FeedbackInfo, error) {
+func (m *defaultWss) DeleteFeedback(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetMoneyLogList(ctx context.Context, in *MoneyLogListReq, opts ...grpc.CallOption) (*MoneyLogListResp, error) {
+func (m *defaultWss) AdjustMoneyLog(ctx context.Context, in *AdjustMoneyLogReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetMoneyLogDetail(ctx context.Context, in *MoneyLogDetailReq, opts ...grpc.CallOption) (*MoneyLogDetailResp, error) {
+func (m *defaultWss) GetWithdrawList(ctx context.Context, in *WithdrawListReq, opts ...grpc.CallOption) (*WithdrawListResp, error) {
+func (m *defaultWss) CreateWithdraw(ctx context.Context, in *WithdrawInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) AuditWithdraw(ctx context.Context, in *AuditWithdrawReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) DeleteWithdraw(ctx context.Context, in *DeleteWithdrawReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetShopFinanceSummary(ctx context.Context, in *ShopFinanceSummaryReq, opts ...grpc.CallOption) (*ShopFinanceSummaryResp, error) {
+func (m *defaultWss) CreateGoods(ctx context.Context, in *GoodsInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateGoods(ctx context.Context, in *GoodsInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetGoodsList(ctx context.Context, in *GoodsListReq, opts ...grpc.CallOption) (*GoodsListResp, error) {
+func (m *defaultWss) GetGoodsById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*GoodsInfo, error) {
+func (m *defaultWss) DeleteGoods(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetGoodsDetail(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*GoodsDetailResp, error) {
+func (m *defaultWss) SearchGoods(ctx context.Context, in *GoodsSearchReq, opts ...grpc.CallOption) (*GoodsListResp, error) {
+func (m *defaultWss) CreateGoodsFull(ctx context.Context, in *GoodsCreateFullReq, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateGoodsFull(ctx context.Context, in *GoodsUpdateFullReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateGoodsFollow(ctx context.Context, in *GoodsFollowInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateGoodsFollow(ctx context.Context, in *GoodsFollowInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetGoodsFollowList(ctx context.Context, in *GoodsFollowListReq, opts ...grpc.CallOption) (*GoodsFollowListResp, error) {
+func (m *defaultWss) GetGoodsFollowById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*GoodsFollowInfo, error) {
+func (m *defaultWss) DeleteGoodsFollow(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateGoodsSku(ctx context.Context, in *GoodsSkuInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateGoodsSku(ctx context.Context, in *GoodsSkuInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetGoodsSkuList(ctx context.Context, in *GoodsSkuListReq, opts ...grpc.CallOption) (*GoodsSkuListResp, error) {
+func (m *defaultWss) GetGoodsSkuById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*GoodsSkuInfo, error) {
+func (m *defaultWss) DeleteGoodsSku(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) DecrementSkuStock(ctx context.Context, in *DecrementStockReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) RestoreSkuStock(ctx context.Context, in *RestoreStockReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateGoodsSpu(ctx context.Context, in *GoodsSpuInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateGoodsSpu(ctx context.Context, in *GoodsSpuInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetGoodsSpuList(ctx context.Context, in *GoodsSpuListReq, opts ...grpc.CallOption) (*GoodsSpuListResp, error) {
+func (m *defaultWss) GetGoodsSpuById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*GoodsSpuInfo, error) {
+func (m *defaultWss) DeleteGoodsSpu(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateGroupsOrder(ctx context.Context, in *GroupsOrderInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateGroupsOrder(ctx context.Context, in *GroupsOrderInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetGroupsOrderList(ctx context.Context, in *GroupsOrderListReq, opts ...grpc.CallOption) (*GroupsOrderListResp, error) {
+func (m *defaultWss) GetGroupsOrderById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*GroupsOrderInfo, error) {
+func (m *defaultWss) DeleteGroupsOrder(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateIcon(ctx context.Context, in *IconInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateIcon(ctx context.Context, in *IconInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetIconList(ctx context.Context, in *IconListReq, opts ...grpc.CallOption) (*IconListResp, error) {
+func (m *defaultWss) GetIconById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*IconInfo, error) {
+func (m *defaultWss) DeleteIcon(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateLink(ctx context.Context, in *LinkInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateLink(ctx context.Context, in *LinkInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetLinkList(ctx context.Context, in *LinkListReq, opts ...grpc.CallOption) (*LinkListResp, error) {
+func (m *defaultWss) GetLinkById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*LinkInfo, error) {
+func (m *defaultWss) DeleteLink(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) MerchantLogin(ctx context.Context, in *MerchantLoginReq, opts ...grpc.CallOption) (*MerchantLoginResp, error) {
+func (m *defaultWss) GetMerchantProfile(ctx context.Context, in *MerchantProfileReq, opts ...grpc.CallOption) (*MerchantProfileResp, error) {
+func (m *defaultWss) MerchantCheck(ctx context.Context, in *MerchantCheckReq, opts ...grpc.CallOption) (*MerchantCheckResp, error) {
+func (m *defaultWss) GetShopStaffList(ctx context.Context, in *ShopStaffListReq, opts ...grpc.CallOption) (*ShopStaffListResp, error) {
+func (m *defaultWss) CreateShopStaff(ctx context.Context, in *ShopStaffCreateReq, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateShopStaff(ctx context.Context, in *ShopStaffInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) DeleteShopStaff(ctx context.Context, in *ShopStaffDeleteReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) ResetShopStaffPassword(ctx context.Context, in *ShopStaffResetPwdReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetShopRoleList(ctx context.Context, in *ShopRoleListReq, opts ...grpc.CallOption) (*ShopRoleListResp, error) {
+func (m *defaultWss) SaveShopRole(ctx context.Context, in *ShopRoleSaveReq, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) DeleteShopRole(ctx context.Context, in *ShopRoleDeleteReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetPermCodes(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*PermCodeListResp, error) {
+func (m *defaultWss) CreateOrder(ctx context.Context, in *OrderInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateOrder(ctx context.Context, in *OrderInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetOrderList(ctx context.Context, in *OrderListReq, opts ...grpc.CallOption) (*OrderListResp, error) {
+func (m *defaultWss) GetOrderById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*OrderInfo, error) {
+func (m *defaultWss) DeleteOrder(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) PlaceOrder(ctx context.Context, in *PlaceOrderReq, opts ...grpc.CallOption) (*PlaceOrderResp, error) {
+func (m *defaultWss) GetUserOrderList(ctx context.Context, in *UserOrderListReq, opts ...grpc.CallOption) (*OrderListResp, error) {
+func (m *defaultWss) GetOrderDetail(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*OrderDetailResp, error) {
+func (m *defaultWss) PayOrder(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CancelOrder(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) DeliverOrder(ctx context.Context, in *DeliverOrderReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) TakeOrder(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateOrderAddress(ctx context.Context, in *OrderAddressInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateOrderAddress(ctx context.Context, in *OrderAddressInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetOrderAddressList(ctx context.Context, in *OrderAddressListReq, opts ...grpc.CallOption) (*OrderAddressListResp, error) {
+func (m *defaultWss) GetOrderAddressById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*OrderAddressInfo, error) {
+func (m *defaultWss) DeleteOrderAddress(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateOrderGoods(ctx context.Context, in *OrderGoodsInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateOrderGoods(ctx context.Context, in *OrderGoodsInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetOrderGoodsList(ctx context.Context, in *OrderGoodsListReq, opts ...grpc.CallOption) (*OrderGoodsListResp, error) {
+func (m *defaultWss) GetOrderGoodsById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*OrderGoodsInfo, error) {
+func (m *defaultWss) DeleteOrderGoods(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreatePage(ctx context.Context, in *PageInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdatePage(ctx context.Context, in *PageInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetPageList(ctx context.Context, in *PageListReq, opts ...grpc.CallOption) (*PageListResp, error) {
+func (m *defaultWss) GetPageById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*PageInfo, error) {
+func (m *defaultWss) DeletePage(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreatePay(ctx context.Context, in *PayInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdatePay(ctx context.Context, in *PayInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetPayList(ctx context.Context, in *PayListReq, opts ...grpc.CallOption) (*PayListResp, error) {
+func (m *defaultWss) GetPayById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*PayInfo, error) {
+func (m *defaultWss) DeletePay(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) PreparePay(ctx context.Context, in *PreparePayReq, opts ...grpc.CallOption) (*PreparePayResp, error) {
+func (m *defaultWss) PaySuccess(ctx context.Context, in *PaySuccessReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreatePayOutTrade(ctx context.Context, in *PayOutTradeInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdatePayOutTrade(ctx context.Context, in *PayOutTradeInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetPayOutTradeList(ctx context.Context, in *PayOutTradeListReq, opts ...grpc.CallOption) (*PayOutTradeListResp, error) {
+func (m *defaultWss) GetPayOutTradeById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*PayOutTradeInfo, error) {
+func (m *defaultWss) DeletePayOutTrade(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateRefund(ctx context.Context, in *RefundInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateRefund(ctx context.Context, in *RefundInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetRefundList(ctx context.Context, in *RefundListReq, opts ...grpc.CallOption) (*RefundListResp, error) {
+func (m *defaultWss) GetRefundById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*RefundInfo, error) {
+func (m *defaultWss) DeleteRefund(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) ApplyRefund(ctx context.Context, in *ApplyRefundReq, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) AuditRefund(ctx context.Context, in *AuditRefundReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) ReturnRefund(ctx context.Context, in *ReturnRefundReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) ReceiveRefund(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CancelRefund(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateShop(ctx context.Context, in *ShopInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateShop(ctx context.Context, in *ShopInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetShopList(ctx context.Context, in *ShopListReq, opts ...grpc.CallOption) (*ShopListResp, error) {
+func (m *defaultWss) GetShopById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*ShopInfo, error) {
+func (m *defaultWss) DeleteShop(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateShopFreight(ctx context.Context, in *ShopFreightInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateShopFreight(ctx context.Context, in *ShopFreightInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetShopFreightList(ctx context.Context, in *ShopFreightListReq, opts ...grpc.CallOption) (*ShopFreightListResp, error) {
+func (m *defaultWss) GetShopFreightById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*ShopFreightInfo, error) {
+func (m *defaultWss) DeleteShopFreight(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CalcFreight(ctx context.Context, in *CalcFreightReq, opts ...grpc.CallOption) (*CalcFreightResp, error) {
+func (m *defaultWss) CreateShopFreightData(ctx context.Context, in *ShopFreightDataInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateShopFreightData(ctx context.Context, in *ShopFreightDataInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetShopFreightDataList(ctx context.Context, in *ShopFreightDataListReq, opts ...grpc.CallOption) (*ShopFreightDataListResp, error) {
+func (m *defaultWss) GetShopFreightDataById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*ShopFreightDataInfo, error) {
+func (m *defaultWss) DeleteShopFreightData(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateShopService(ctx context.Context, in *ShopServiceInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateShopService(ctx context.Context, in *ShopServiceInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetShopServiceList(ctx context.Context, in *ShopServiceListReq, opts ...grpc.CallOption) (*ShopServiceListResp, error) {
+func (m *defaultWss) GetShopServiceById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*ShopServiceInfo, error) {
+func (m *defaultWss) DeleteShopService(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetShopSettings(ctx context.Context, in *ShopSettingsReq, opts ...grpc.CallOption) (*ShopSettingsInfo, error) {
+func (m *defaultWss) UpdateShopSettings(ctx context.Context, in *ShopSettingsInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetGlobalStyle(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GlobalStyleInfo, error) {
+func (m *defaultWss) UpdateGlobalStyle(ctx context.Context, in *GlobalStyleInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) CreateToken(ctx context.Context, in *TokenInfo, opts ...grpc.CallOption) (*BaseIDResp, error) {
+func (m *defaultWss) UpdateToken(ctx context.Context, in *TokenInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetTokenList(ctx context.Context, in *TokenListReq, opts ...grpc.CallOption) (*TokenListResp, error) {
+func (m *defaultWss) GetTokenById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*TokenInfo, error) {
+func (m *defaultWss) DeleteToken(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetTokenByToken(ctx context.Context, in *TokenByTokenReq, opts ...grpc.CallOption) (*TokenInfo, error) {
+func (m *defaultWss) CreateUser(ctx context.Context, in *UserInfo, opts ...grpc.CallOption) (*BaseIDUint32Resp, error) {
+func (m *defaultWss) UpdateUser(ctx context.Context, in *UserInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) GetUserList(ctx context.Context, in *UserListReq, opts ...grpc.CallOption) (*UserListResp, error) {
+func (m *defaultWss) GetUserById(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*UserInfo, error) {
+func (m *defaultWss) DeleteUser(ctx context.Context, in *IDsUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) UserLogin(ctx context.Context, in *UserLoginReq, opts ...grpc.CallOption) (*UserLoginResp, error) {
+func (m *defaultWss) UserLogout(ctx context.Context, in *IDUint32Req, opts ...grpc.CallOption) (*BaseResp, error) {
+func (m *defaultWss) InitDatabase(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*BaseResp, error) {
+===== merchant_biz_handlers head 120 =====
+package handler
+
+import (
+	"crypto/rand"
+	"encoding/hex"
+	"encoding/json"
+	"errors"
+	"io"
+	"net/http"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
+
+	merchantlogic "github.com/suyuan32/wanshop-api/internal/logic/merchant"
+	"github.com/suyuan32/wanshop-api/internal/response"
+	"github.com/suyuan32/wanshop-api/internal/svc"
+	"github.com/suyuan32/wanshop-rpc/wssclient"
+
+	"github.com/zeromicro/go-zero/rest/httpx"
+)
+
+// parseJsonBodyLimit 涓?parseJsonBody 鐩稿悓锛屼絾鍏佽鑷畾涔?body 涓婇檺
+// 锛堝晢鍝佷繚瀛?瑁呬慨椤甸潰 JSON 鍙兘瓒呰繃榛樿 1MB锛?func parseJsonBodyLimit(r *http.Request, v any, max int64) error {
+	body, err := io.ReadAll(io.LimitReader(r.Body, max))
+	if err != nil {
+		return err
+	}
+	if len(body) == 0 {
+		return nil
+	}
+	return json.Unmarshal(body, v)
+}
+
+// parsePathID 瑙ｆ瀽 :id 璺緞鍙傛暟
+func parsePathID(r *http.Request) (uint32, error) {
+	var req struct {
+		Id uint32 `path:"id"`
+	}
+	if err := httpx.Parse(r, &req, true); err != nil {
+		return 0, err
+	}
+	return req.Id, nil
+}
+
+// ===== trade | 浜ゆ槗绠＄悊 =====
+
+// MerchantOrderListHandler 鍟嗗搧璁㈠崟鍒嗛〉鍒楄〃
+func MerchantOrderListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req wssclient.OrderListReq
+		if err := parseJsonBody(r, &req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		l := merchantlogic.NewMerchantLogic(r.Context(), svcCtx)
+		resp, err := l.OrderList(&req)
+		if err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			response.OkJsonList(r.Context(), w, resp.GetTotal(), resp.GetData())
+		}
+	}
+}
+
+// MerchantOrderDetailHandler 璁㈠崟璇︽儏锛堣鍗?鍟嗗搧鏄庣粏/鏀惰揣鍦板潃锛?func MerchantOrderDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parsePathID(r)
+		if err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		l := merchantlogic.NewMerchantLogic(r.Context(), svcCtx)
+		resp, err := l.OrderDetail(id)
+		if err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			response.OkJson(r.Context(), w, resp)
+		}
+	}
+}
+
+// MerchantOrderDeliverHandler 璁㈠崟鍙戣揣锛堝揩閫掑叕鍙?鍗曞彿锛?func MerchantOrderDeliverHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req wssclient.DeliverOrderReq
+		if err := parseJsonBody(r, &req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		l := merchantlogic.NewMerchantLogic(r.Context(), svcCtx)
+		if err := l.OrderDeliver(&req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			response.OkJsonMsg(r.Context(), w)
+		}
+	}
+}
+
+// MerchantGroupsListHandler 鎷煎洟璁㈠崟鍒楄〃
+func MerchantGroupsListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req wssclient.GroupsOrderListReq
+		if err := parseJsonBody(r, &req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		l := merchantlogic.NewMerchantLogic(r.Context(), svcCtx)
+		resp, err := l.GroupsOrderList(&req)
+		if err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			response.OkJsonList(r.Context(), w, resp.GetTotal(), resp.GetData())
+		}
+	}
+}
+
+// MerchantCommentListHandler 璇勮鍒楄〃
+func MerchantCommentListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req wssclient.CommentListReq

@@ -1,0 +1,3 @@
+﻿merchant_handlers.go:47: // MerchantPermCodesHandler 商家端权限码注册表
+merchant_handlers.go:48: func MerchantPermCodesHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+merchant_handlers.go:51: resp, err := l.PermCodes()

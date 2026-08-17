@@ -1,0 +1,85 @@
+﻿
+\logic\address\create_address_logic.go:37 SetNotNilProvince(in.Province).
+\logic\address\get_address_by_id_logic.go:42 Province:	&result.Province,
+\logic\address\get_address_list_logic.go:50 if in.Province != nil {
+\logic\address\get_address_list_logic.go:51 predicates = append(predicates, address.ProvinceContains(*in.Province))
+\logic\address\get_address_list_logic.go:107 Province:	&v.Province,
+\logic\address\get_user_address_list_logic.go:51 Province:         &v.Province,
+\logic\address\update_address_logic.go:37 SetNotNilProvince(in.Province).
+\logic\order\place_order_logic.go:120 Province:  addr.Province,
+\logic\shop_freight\calc_freight_logic.go:8 "github.com/suyuan32/wanshop-rpc/ent/shopfreightdata"
+\logic\shop_freight\calc_freight_logic.go:50 rows, err := l.svcCtx.DB.ShopFreightData.Query().
+\logic\shop_freight\calc_freight_logic.go:51 Where(shopfreightdata.FreightIDEQ(in.FreightId), shopfreightdata.DeletetimeIsNil(), shopfreightdata.StatusEQ("normal")).
+\logic\shop_freight\calc_freight_logic.go:57 // match region: exact province hit first, fallback to default rule (empty province)
+\logic\shop_freight\calc_freight_logic.go:62 if strings.TrimSpace(row.Province) == "" {
+\logic\shop_freight\calc_freight_logic.go:66 if in.Province != "" && strings.Contains(row.Province, in.Province) {
+\logic\shop_freight_data\create_shop_freight_data_logic.go:15 type CreateShopFreightDataLogic struct {
+\logic\shop_freight_data\create_shop_freight_data_logic.go:21 func NewCreateShopFreightDataLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CreateShopFreightDataLogic {
+\logic\shop_freight_data\create_shop_freight_data_logic.go:22 return &CreateShopFreightDataLogic{
+\logic\shop_freight_data\create_shop_freight_data_logic.go:29 func (l *CreateShopFreightDataLogic) CreateShopFreightData(in *wss.ShopFreightDataInfo) (*wss.BaseIDUint32Resp, error) {
+\logic\shop_freight_data\create_shop_freight_data_logic.go:30 result, err := l.svcCtx.DB.ShopFreightData.Create().
+\logic\shop_freight_data\create_shop_freight_data_logic.go:33 SetNotNilProvince(in.Province).
+\logic\shop_freight_data\create_shop_freight_data_logic.go:34 SetNotNilCitys(in.Citys).
+\logic\shop_freight_data\delete_shop_freight_data_logic.go:6 "github.com/suyuan32/wanshop-rpc/ent/shopfreightdata"
+\logic\shop_freight_data\delete_shop_freight_data_logic.go:15 type DeleteShopFreightDataLogic struct {
+\logic\shop_freight_data\delete_shop_freight_data_logic.go:21 func NewDeleteShopFreightDataLogic(ctx context.Context, svcCtx *svc.ServiceContext) *DeleteShopFreightDataLogic {
+\logic\shop_freight_data\delete_shop_freight_data_logic.go:22 return &DeleteShopFreightDataLogic{
+\logic\shop_freight_data\delete_shop_freight_data_logic.go:29 func (l *DeleteShopFreightDataLogic) DeleteShopFreightData(in *wss.IDsUint32Req) (*wss.BaseResp, error) {
+\logic\shop_freight_data\delete_shop_freight_data_logic.go:30 _, err := l.svcCtx.DB.ShopFreightData.Delete().Where(shopfreightdata.IDIn(in.Ids...)).Exec(l.ctx)
+\logic\shop_freight_data\get_shop_freight_data_by_id_logic.go:14 type GetShopFreightDataByIdLogic struct {
+\logic\shop_freight_data\get_shop_freight_data_by_id_logic.go:20 func NewGetShopFreightDataByIdLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetShopFreightDataByIdLogic {
+\logic\shop_freight_data\get_shop_freight_data_by_id_logic.go:21 return &GetShopFreightDataByIdLogic{
+\logic\shop_freight_data\get_shop_freight_data_by_id_logic.go:28 func (l *GetShopFreightDataByIdLogic) GetShopFreightDataById(in *wss.IDUint32Req) (*wss.ShopFreightDataInfo, error) {
+\logic\shop_freight_data\get_shop_freight_data_by_id_logic.go:29 result, err := l.svcCtx.DB.ShopFreightData.Get(l.ctx, in.Id)
+\logic\shop_freight_data\get_shop_freight_data_by_id_logic.go:34 return &wss.ShopFreightDataInfo{
+\logic\shop_freight_data\get_shop_freight_data_by_id_logic.go:38 Province:	&result.Province,
+\logic\shop_freight_data\get_shop_freight_data_by_id_logic.go:39 Citys:	&result.Citys,
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:6 "github.com/suyuan32/wanshop-rpc/ent/shopfreightdata"
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:16 type GetShopFreightDataListLogic struct {
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:22 func NewGetShopFreightDataListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetShopFreightDataListLogic {
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:23 return &GetShopFreightDataListLogic{
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:30 func (l *GetShopFreightDataListLogic) GetShopFreightDataList(in *wss.ShopFreightDataListReq) (*wss.ShopFreightDataListResp, error) {
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:31 var predicates []predicate.ShopFreightData
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:33 predicates = append(predicates, shopfreightdata.ShopIDEQ(*in.ShopId))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:36 predicates = append(predicates, shopfreightdata.FreightIDEQ(*in.FreightId))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:38 if in.Province != nil {
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:39 predicates = append(predicates, shopfreightdata.ProvinceContains(*in.Province))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:41 if in.Citys != nil {
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:42 predicates = append(predicates, shopfreightdata.CitysContains(*in.Citys))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:45 predicates = append(predicates, shopfreightdata.FirstEQ(*in.First))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:48 predicates = append(predicates, shopfreightdata.FirstFeeEQ(*in.FirstFee))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:51 predicates = append(predicates, shopfreightdata.AdditionalEQ(*in.Additional))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:54 predicates = append(predicates, shopfreightdata.AdditionalFeeEQ(*in.AdditionalFee))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:57 predicates = append(predicates, shopfreightdata.CreatetimeEQ(*in.Createtime))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:60 predicates = append(predicates, shopfreightdata.UpdatetimeEQ(*in.Updatetime))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:63 predicates = append(predicates, shopfreightdata.DeletetimeEQ(*in.Deletetime))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:66 predicates = append(predicates, shopfreightdata.StatusContains(*in.Status))
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:68 result, err := l.svcCtx.DB.ShopFreightData.Query().Where(predicates...).Page(l.ctx, in.Page, in.PageSize)
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:74 resp := &wss.ShopFreightDataListResp{}
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:78 resp.Data = append(resp.Data, &wss.ShopFreightDataInfo{
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:82 Province:	&v.Province,
+\logic\shop_freight_data\get_shop_freight_data_list_logic.go:83 Citys:	&v.Citys,
+\logic\shop_freight_data\update_shop_freight_data_logic.go:15 type UpdateShopFreightDataLogic struct {
+\logic\shop_freight_data\update_shop_freight_data_logic.go:21 func NewUpdateShopFreightDataLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UpdateShopFreightDataLogic {
+\logic\shop_freight_data\update_shop_freight_data_logic.go:22 return &UpdateShopFreightDataLogic{
+\logic\shop_freight_data\update_shop_freight_data_logic.go:29 func (l *UpdateShopFreightDataLogic) UpdateShopFreightData(in *wss.ShopFreightDataInfo) (*wss.BaseResp, error) {
+\logic\shop_freight_data\update_shop_freight_data_logic.go:30 err:= l.svcCtx.DB.ShopFreightData.UpdateOneID(*in.Id).
+\logic\shop_freight_data\update_shop_freight_data_logic.go:33 SetNotNilProvince(in.Province).
+\logic\shop_freight_data\update_shop_freight_data_logic.go:34 SetNotNilCitys(in.Citys).
+\server\wss_server.go:1120 // ShopFreightData management
+\server\wss_server.go:1121 func (s *WssServer) CreateShopFreightData(ctx context.Context, in *wss.ShopFreightDataInfo) (*wss.BaseIDUint32Resp, error) {
+\server\wss_server.go:1122 l := shop_freight_data.NewCreateShopFreightDataLogic(ctx, s.svcCtx)
+\server\wss_server.go:1123 return l.CreateShopFreightData(in)
+\server\wss_server.go:1126 func (s *WssServer) UpdateShopFreightData(ctx context.Context, in *wss.ShopFreightDataInfo) (*wss.BaseResp, error) {
+\server\wss_server.go:1127 l := shop_freight_data.NewUpdateShopFreightDataLogic(ctx, s.svcCtx)
+\server\wss_server.go:1128 return l.UpdateShopFreightData(in)
+\server\wss_server.go:1131 func (s *WssServer) GetShopFreightDataList(ctx context.Context, in *wss.ShopFreightDataListReq) (*wss.ShopFreightDataListResp, error) {
+\server\wss_server.go:1132 l := shop_freight_data.NewGetShopFreightDataListLogic(ctx, s.svcCtx)
+\server\wss_server.go:1133 return l.GetShopFreightDataList(in)
+\server\wss_server.go:1136 func (s *WssServer) GetShopFreightDataById(ctx context.Context, in *wss.IDUint32Req) (*wss.ShopFreightDataInfo, error) {
+\server\wss_server.go:1137 l := shop_freight_data.NewGetShopFreightDataByIdLogic(ctx, s.svcCtx)
+\server\wss_server.go:1138 return l.GetShopFreightDataById(in)
+\server\wss_server.go:1141 func (s *WssServer) DeleteShopFreightData(ctx context.Context, in *wss.IDsUint32Req) (*wss.BaseResp, error) {
+\server\wss_server.go:1142 l := shop_freight_data.NewDeleteShopFreightDataLogic(ctx, s.svcCtx)
+\server\wss_server.go:1143 return l.DeleteShopFreightData(in)
+DONE

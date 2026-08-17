@@ -1,0 +1,16 @@
+﻿
+===== categoryTree usage
+\views\category\Index.vue:93 import { categoryTree, categorySave, categoryDelete } from '../../api/shop'
+\views\category\Index.vue:103 tree.value = (await categoryTree(type.value)) || []
+\views\goods\GoodsEdit.vue:232 platformCategoryTree,
+\views\goods\GoodsEdit.vue:233 shopCategoryTree,
+\views\goods\GoodsEdit.vue:378 platformCategoryTree(),
+\views\goods\GoodsEdit.vue:391 const tree = await shopCategoryTree()
+\views\shop\Brand.vue:97 import { brandListAll, brandSave, brandDelete, categoryTree } from '../../api/shop'
+\views\shop\Brand.vue:113 const tree = (await categoryTree('goods')) || []
+===== goodsList usage
+\components\LinkPicker.vue:53 import { goodsList } from '../api/goods'
+\components\LinkPicker.vue:98 const resp = await goodsList({ page: 1, page_size: 50, grounding: 1 })
+\views\goods\GoodsList.vue:78 import { goodsList, goodsDelete, goodsGrounding } from '../../api/goods'
+\views\goods\GoodsList.vue:99 const resp = await goodsList(body)
+DONE

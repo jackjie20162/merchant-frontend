@@ -1,0 +1,169 @@
+﻿
+===== delete_withdraw_logic.go =====
+package withdraw
+
+import (
+	"context"
+
+	"github.com/suyuan32/wanshop-rpc/ent/withdraw"
+	"github.com/suyuan32/wanshop-rpc/internal/svc"
+	"github.com/suyuan32/wanshop-rpc/internal/utils/dberrorhandler"
+	"github.com/suyuan32/wanshop-rpc/types/wss"
+
+	"github.com/suyuan32/simple-admin-common/i18n"
+	"github.com/suyuan32/simple-admin-common/msg/errormsg"
+
+	"github.com/zeromicro/go-zero/core/errorx"
+	"github.com/zeromicro/go-zero/core/logx"
+)
+
+type DeleteWithdrawLogic struct {
+	ctx    context.Context
+	svcCtx *svc.ServiceContext
+	logx.Logger
+}
+
+func NewDeleteWithdrawLogic(ctx context.Context, svcCtx *svc.ServiceContext) *DeleteWithdrawLogic {
+	return &DeleteWithdrawLogic{
+		ctx:    ctx,
+		svcCtx: svcCtx,
+		Logger: logx.WithContext(ctx),
+	}
+}
+
+// DeleteWithdraw 批量删除提现记录
+func (l *DeleteWithdrawLogic) DeleteWithdraw(in *wss.DeleteWithdrawReq) (*wss.BaseResp, error) {
+	if len(in.Ids) == 0 {
+		return nil, errorx.NewCodeInvalidArgumentError(i18n.TargetNotFound)
+	}
+
+	_, err := l.svcCtx.DB.Withdraw.Delete().Where(withdraw.IDIn(in.Ids...)).Exec(l.ctx)
+	if err != nil {
+		return nil, dberrorhandler.DefaultEntError(l.Logger, err, in)
+	}
+
+	return &wss.BaseResp{Msg: errormsg.DeleteSuccess}, nil
+}
+===== merchant_biz_handlers.go tail (550-649) =====
+}
+
+// ptrUint32Api handler 包内指针辅助（避免与 logic 包冲突）
+func ptrUint32Api(v uint32) *uint32 {
+	return &v
+}
+
+// MerchantAttachmentListHandler 图片空间列表
+func MerchantAttachmentListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req wssclient.AttachmentListReq
+		if err := parseJsonBody(r, &req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		l := merchantlogic.NewMerchantLogic(r.Context(), svcCtx)
+		resp, err := l.AttachmentList(&req)
+		if err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			response.OkJsonList(r.Context(), w, resp.GetTotal(), resp.GetData())
+		}
+	}
+}
+
+// MerchantAttachmentDeleteHandler 删除图片空间附件
+func MerchantAttachmentDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req wssclient.IDsUint32Req
+		if err := parseJsonBody(r, &req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		l := merchantlogic.NewMerchantLogic(r.Context(), svcCtx)
+		if err := l.AttachmentDelete(&req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			response.OkJsonMsg(r.Context(), w)
+		}
+	}
+}
+
+// ===== page | 装修页面 =====
+
+// MerchantPageListHandler 装修页面列表（type=systpl 拉取平台模板）
+func MerchantPageListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req wssclient.PageListReq
+		if err := parseJsonBody(r, &req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		l := merchantlogic.NewMerchantLogic(r.Context(), svcCtx)
+		resp, err := l.PageList(&req)
+		if err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			response.OkJsonList(r.Context(), w, resp.GetTotal(), resp.GetData())
+		}
+	}
+}
+
+// MerchantPageDetailHandler 装修页面详情
+func MerchantPageDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parsePathID(r)
+		if err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		l := merchantlogic.NewMerchantLogic(r.Context(), svcCtx)
+		resp, err := l.PageDetail(id)
+		if err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			response.OkJson(r.Context(), w, resp)
+		}
+	}
+}
+
+// MerchantPageSaveHandler 新建/保存装修页面（page/item JSON）
+func MerchantPageSaveHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req wssclient.PageInfo
+		if err := parseJsonBodyLimit(r, &req, 8<<20); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		l := merchantlogic.NewMerchantLogic(r.Context(), svcCtx)
+		resp, err := l.PageSave(&req)
+		if err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			response.OkJson(r.Context(), w, resp)
+		}
+	}
+}
+
+// MerchantPageDeleteHandler 删除装修页面
+func MerchantPageDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req wssclient.IDsUint32Req
+		if err := parseJsonBody(r, &req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		l := merchantlogic.NewMerchantLogic(r.Context(), svcCtx)
+		if err := l.PageDelete(&req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			response.OkJsonMsg(r.Context(), w)
+		}
+	}
+}
+===== parseJsonBody definition =====
+admin_handlers.go:18: func parseJsonBody(r *http.Request, v any) error {
+===== response funcs =====
+func OkJson(ctx context.Context, w http.ResponseWriter, data any) {
+func OkJsonMsg(ctx context.Context, w http.ResponseWriter) {
+func OkJsonList(ctx context.Context, w http.ResponseWriter, total uint64, data any) {
+func ErrorJson(ctx context.Context, w http.ResponseWriter, code int, msg string) {
+func DefaultErrorHandler(_ context.Context, err error) (int, any) {

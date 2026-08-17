@@ -1,0 +1,4 @@
+﻿
+===== all type names containing Coupon/Freight/Withdraw/Settings/Bill =====
+===== full defs =====
+DONE

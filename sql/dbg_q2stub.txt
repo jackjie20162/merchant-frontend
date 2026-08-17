@@ -1,0 +1,10 @@
+﻿
+===== D:\go_work\simple-admin\wanshop-rpc\internal\logic\shopfreightdata =====
+===== D:\go_work\simple-admin\wanshop-rpc\internal\logic\shopfreight =====
+===== D:\go_work\simple-admin\wanshop-rpc\internal\logic\coupon =====
+create_coupon_logic.go lines=63 todo=0
+delete_coupon_logic.go lines=37 todo=0
+draw_coupon_logic.go lines=130 todo=0
+get_coupon_by_id_logic.go lines=63 todo=0
+get_coupon_list_logic.go lines=148 todo=0
+update_coupon_logic.go lines=63 todo=0

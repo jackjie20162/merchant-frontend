@@ -1,0 +1,129 @@
+﻿
+FILE: D:\go_work\simple-admin\wanshop-rpc\internal\logic\merchant\helper.go
+===== content =====
+package merchant
+
+import (
+	"crypto/md5"
+	"encoding/hex"
+	"strings"
+
+	"github.com/google/uuid"
+	"github.com/suyuan32/wanshop-rpc/types/wss"
+)
+
+// permCode 商家端权限码定义（新增商家端模块时在此登记）
+type permCode struct {
+	code   string
+	name   string
+	module string
+}
+
+// permCodes 权限码注册表，按模块分组
+var permCodes = []permCode{
+	{"dashboard:view", "查看工作台", "工作台"},
+	{"staff:list", "查看员工", "员工管理"},
+	{"staff:create", "新增员工", "员工管理"},
+	{"staff:update", "编辑员工", "员工管理"},
+	{"staff:delete", "删除员工", "员工管理"},
+	{"staff:resetpwd", "重置员工密码", "员工管理"},
+	{"role:list", "查看角色", "角色权限"},
+	{"role:save", "新增/编辑角色", "角色权限"},
+	{"role:delete", "删除角色", "角色权限"},
+	// 交易管理
+	{"order:list", "查看订单", "交易管理"},
+	{"order:deliver", "订单发货", "交易管理"},
+	{"groups:list", "查看拼团订单", "交易管理"},
+	{"comment:list", "查看评论", "交易管理"},
+	{"comment:update", "处理评论", "交易管理"},
+	{"refund:list", "查看退款", "交易管理"},
+	{"refund:audit", "审核退款", "交易管理"},
+	// 商品管理
+	{"goods:list", "查看商品", "商品管理"},
+	{"goods:save", "发布/编辑商品", "商品管理"},
+	{"goods:delete", "删除商品", "商品管理"},
+	// 自定义类目
+	{"category:list", "查看类目", "自定义类目"},
+	{"category:save", "新增/编辑类目", "自定义类目"},
+	{"category:delete", "删除类目", "自定义类目"},
+	// 店铺管理
+	{"shop:save", "编辑店铺资料", "店铺管理"},
+	{"brand:list", "查看品牌", "店铺管理"},
+	{"brand:save", "新增/编辑品牌", "店铺管理"},
+	{"brand:delete", "删除品牌", "店铺管理"},
+	{"attach:list", "查看图片空间", "店铺管理"},
+	{"attach:upload", "上传图片", "店铺管理"},
+	{"attach:delete", "删除图片", "店铺管理"},
+	{"page:list", "查看装修页面", "店铺管理"},
+	{"page:save", "保存装修页面", "店铺管理"},
+	{"page:delete", "删除装修页面", "店铺管理"},
+}
+
+// allPermCodes 返回全部权限码（主账号拥有全部权限）
+func allPermCodes() []string {
+	codes := make([]string, 0, len(permCodes))
+	for _, p := range permCodes {
+		codes = append(codes, p.code)
+	}
+	return codes
+}
+
+// permCodeListResp 返回权限码注册表响应
+func permCodeListResp() *wss.PermCodeListResp {
+	resp := &wss.PermCodeListResp{}
+	for _, p := range permCodes {
+		resp.Data = append(resp.Data, &wss.PermCodeInfo{
+			Code:   p.code,
+			Name:   p.name,
+			Module: p.module,
+		})
+	}
+	return resp
+}
+
+// validPerms 校验权限码是否都在注册表中，返回非法的权限码
+func invalidPerms(codes []string) []string {
+	registry := make(map[string]struct{}, len(permCodes))
+	for _, p := range permCodes {
+		registry[p.code] = struct{}{}
+	}
+	var invalid []string
+	for _, c := range codes {
+		if _, ok := registry[c]; !ok {
+			invalid = append(invalid, c)
+		}
+	}
+	return invalid
+}
+
+// permsToString 权限码切片转逗号分隔字符串
+func permsToString(codes []string) string {
+	return strings.Join(codes, ",")
+}
+
+// permsFromString 逗号分隔字符串转权限码切片
+func permsFromString(s string) []string {
+	if s == "" {
+		return nil
+	}
+	parts := strings.Split(s, ",")
+	codes := make([]string, 0, len(parts))
+	for _, p := range parts {
+		if p = strings.TrimSpace(p); p != "" {
+			codes = append(codes, p)
+		}
+	}
+	return codes
+}
+
+// md5WithSalt returns FastAdmin style hash: md5(md5(plain) + salt)
+func md5WithSalt(plain, salt string) string {
+	first := md5.Sum([]byte(plain))
+	second := md5.Sum([]byte(hex.EncodeToString(first[:]) + salt))
+	return hex.EncodeToString(second[:])
+}
+
+// newSalt 生成随机密码盐
+func newSalt() string {
+	return uuid.NewString()[:8]
+}

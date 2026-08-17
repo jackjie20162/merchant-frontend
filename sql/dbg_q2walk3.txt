@@ -1,0 +1,440 @@
+﻿
+===== coupon.proto =====
+syntax = "proto3";
+
+// Coupon message
+
+message CouponInfo {
+  optional uint32 id = 1;
+  // 店铺ID
+  optional int32 shop_id = 2;
+  // 类型:reduction=满减,discount=折扣,shipping=邮费,vip=会员
+  optional string type = 3;
+  // 优惠券名称
+  optional string name = 4;
+  // 会员等级(多选)
+  optional string userlevel = 5;
+  // 用户类型
+  optional string usertype = 6;
+  // 优惠金额
+  optional double price = 7;
+  // 折扣率
+  optional float discount = 8;
+  // 使用门槛金额
+  optional double limit = 9;
+  // 适用范围:all=全店,goods=商品,category=类目
+  optional string rangetype = 10;
+  // 范围ID(多选)
+  optional string range = 11;
+  // 领取方式:appoint=指定,fixed=固定
+  optional string pretype = 12;
+  // 有效期(天)
+  optional uint32 validity = 13;
+  // 开始日期
+  optional string startdate = 14;
+  // 结束日期
+  optional string enddate = 15;
+  // 每人限领
+  optional uint32 drawlimit = 16;
+  // 发放方式
+  optional string grant = 17;
+  // 已发放数量
+  optional int32 alreadygrant = 18;
+  // 剩余数量
+  optional int32 surplus = 19;
+  // 使用说明
+  optional string content = 20;
+  // 使用数量
+  optional int32 usenum = 21;
+  // 失效数量
+  optional int32 invalid = 22;
+  // 创建时间
+  optional int64 createtime = 23;
+  // 更新时间
+  optional int64 updatetime = 24;
+  // 删除时间
+  optional int64 deletetime = 25;
+  // 状态
+  optional string status = 26;
+
+}
+
+message CouponListResp {
+  uint64 total = 1;
+  repeated CouponInfo data = 2;
+}
+
+message CouponListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional int32 shop_id = 3;
+  optional string type = 4;
+  optional string name = 5;
+  optional string userlevel = 6;
+  optional string usertype = 7;
+  optional double price = 8;
+  optional float discount = 9;
+  optional double limit = 10;
+  optional string rangetype = 11;
+  optional string range = 12;
+  optional string pretype = 13;
+  optional uint32 validity = 14;
+  optional string startdate = 15;
+  optional string enddate = 16;
+  optional uint32 drawlimit = 17;
+  optional string grant = 18;
+  optional int32 alreadygrant = 19;
+  optional int32 surplus = 20;
+  optional string content = 21;
+  optional int32 usenum = 22;
+  optional int32 invalid = 23;
+  optional int64 createtime = 24;
+  optional int64 updatetime = 25;
+  optional int64 deletetime = 26;
+  optional string status = 27;
+}
+
+// Draw coupon request
+message DrawCouponReq {
+  // 用户ID
+  uint32 user_id = 1;
+  // 优惠券模板ID
+  uint32 coupon_id = 2;
+}
+
+
+service Wss {
+
+  // Coupon management
+  // group: coupon
+  rpc createCoupon (CouponInfo) returns (BaseIDUint32Resp);
+  // group: coupon
+  rpc updateCoupon (CouponInfo) returns (BaseResp);
+  // group: coupon
+  rpc getCouponList (CouponListReq) returns (CouponListResp);
+  // group: coupon
+  rpc getCouponById (IDUint32Req) returns (CouponInfo);
+  // group: coupon
+  rpc deleteCoupon (IDsUint32Req) returns (BaseResp);
+  // User draw coupon (return coupon receive id)
+  // group: coupon
+  rpc drawCoupon (DrawCouponReq) returns (BaseIDUint32Resp);
+}
+===== shop_freight_data.proto =====
+syntax = "proto3";
+
+// ShopFreightData message
+
+message ShopFreightDataInfo {
+  optional uint32 id = 1;
+  // 店铺ID
+  optional int32 shop_id = 2;
+  // 运费模板ID
+  optional uint32 freight_id = 3;
+  // 省份
+  optional string province = 4;
+  // 城市
+  optional string citys = 5;
+  // 首件
+  optional uint32 first = 6;
+  // 运费
+  optional double first_fee = 7;
+  // 续件
+  optional uint32 additional = 8;
+  // 续件运费
+  optional double additional_fee = 9;
+  // 创建时间
+  optional int64 createtime = 10;
+  // 更新时间
+  optional int64 updatetime = 11;
+  // 删除时间
+  optional int64 deletetime = 12;
+  // 状态
+  optional string status = 13;
+
+}
+
+message ShopFreightDataListResp {
+  uint64 total = 1;
+  repeated ShopFreightDataInfo data = 2;
+}
+
+message ShopFreightDataListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional int32 shop_id = 3;
+  optional uint32 freight_id = 4;
+  optional string province = 5;
+  optional string citys = 6;
+  optional uint32 first = 7;
+  optional double first_fee = 8;
+  optional uint32 additional = 9;
+  optional double additional_fee = 10;
+  optional int64 createtime = 11;
+  optional int64 updatetime = 12;
+  optional int64 deletetime = 13;
+  optional string status = 14;
+}
+
+
+service Wss {
+
+  // ShopFreightData management
+  // group: shop_freight_data
+  rpc createShopFreightData (ShopFreightDataInfo) returns (BaseIDUint32Resp);
+  // group: shop_freight_data
+  rpc updateShopFreightData (ShopFreightDataInfo) returns (BaseResp);
+  // group: shop_freight_data
+  rpc getShopFreightDataList (ShopFreightDataListReq) returns (ShopFreightDataListResp);
+  // group: shop_freight_data
+  rpc getShopFreightDataById (IDUint32Req) returns (ShopFreightDataInfo);
+  // group: shop_freight_data
+  rpc deleteShopFreightData (IDsUint32Req) returns (BaseResp);
+
+
+}
+===== shop_settings.proto =====
+syntax = "proto3";
+
+// Shop settings messages (店铺配置: 映射 fa_wanlshop_shop_config, 每店一行)
+
+//  Shop settings (商家店铺配置/寄件人信息/退货信息)
+message ShopSettingsInfo {
+  optional uint32 id = 1;
+  // 店铺ID
+  optional uint32 shop_id = 2;
+  // 运费组合策略:0=运费叠加,1=以最低结算,2=以最高结算
+  optional string freight = 3;
+  // 店铺类目样式:1=一级类目-大图,2=一级类目-九宫格,3=二级类目,4=多级类目
+  optional string category_style = 4;
+  // 是否启用云打印
+  optional string iscloud = 5;
+  // 是否自动打印
+  optional string isauto = 6;
+  // IM欢迎消息(留空不启用)
+  optional string welcome = 7;
+  // 寄件人姓名
+  optional string send_name = 8;
+  // 寄件人电话
+  optional string send_phone_num = 9;
+  // 寄件人地址
+  optional string send_addr = 10;
+  // 退货联系人
+  optional string return_name = 11;
+  // 退货电话
+  optional string return_phone_num = 12;
+  // 退货地址
+  optional string return_addr = 13;
+  // 创建时间
+  optional int64 createtime = 14;
+  // 更新时间
+  optional int64 updatetime = 15;
+}
+
+//  Get shop settings request
+message ShopSettingsReq {
+  uint32 shop_id = 1;
+}
+
+service Wss {
+
+  // Shop settings management (店铺配置)
+  // group: shopsettings
+  rpc getShopSettings (ShopSettingsReq) returns (ShopSettingsInfo);
+  // group: shopsettings
+  rpc updateShopSettings (ShopSettingsInfo) returns (BaseResp);
+}
+===== finance.proto =====
+syntax = "proto3";
+
+// Finance messages (财务管理: 资金账单/用户提现)
+
+//  User money log (资金账单)
+message MoneyLogInfo {
+  optional uint32 id = 1;
+  // 用户ID
+  optional uint32 user_id = 2;
+  // 用户名
+  optional string username = 3;
+  // 变更金额
+  optional double money = 4;
+  // 变更前
+  optional double before = 5;
+  // 变更后
+  optional double after = 6;
+  // 备注
+  optional string memo = 7;
+  // 业务类型:pay=商品交易,groups=拼团,groups_refund=拼团退款,recharge=充值,withdraw=提现,refund=退款,sys=系统业务
+  optional string type = 8;
+  // 业务ID
+  optional string service_ids = 9;
+  // 创建时间
+  optional int64 createtime = 10;
+}
+
+message MoneyLogListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional uint32 user_id = 3;
+  optional string username = 4;
+  optional string type = 5;
+  optional string memo = 6;
+}
+
+message MoneyLogListResp {
+  uint64 total = 1;
+  repeated MoneyLogInfo data = 2;
+}
+
+//  User withdraw (用户提现)
+message WithdrawInfo {
+  optional uint32 id = 1;
+  // 会员ID
+  optional uint32 user_id = 2;
+  // 用户名
+  optional string username = 3;
+  // 金额
+  optional double money = 4;
+  // 手续费
+  optional double handingfee = 5;
+  // 税费
+  optional double taxes = 6;
+  // 类型
+  optional string type = 7;
+  // 提现账户
+  optional string account = 8;
+  // 备注
+  optional string memo = 9;
+  // 订单号
+  optional string orderid = 10;
+  // 流水号
+  optional string transactionid = 11;
+  // 状态:created=申请中,successed=成功,rejected=已拒绝
+  optional string status = 12;
+  // 转账时间
+  optional int64 transfertime = 13;
+  // 添加时间
+  optional int64 createtime = 14;
+  // 更新时间
+  optional int64 updatetime = 15;
+  // 店铺ID:0=用户提现
+  optional uint32 shop_id = 16;
+}
+
+message WithdrawListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional uint32 user_id = 3;
+  optional string status = 4;
+  optional string type = 5;
+  optional string account = 6;
+  optional string username = 7;
+  optional uint32 shop_id = 8;
+}
+
+message WithdrawListResp {
+  uint64 total = 1;
+  repeated WithdrawInfo data = 2;
+}
+
+//  Withdraw audit request (agree | refuse)
+message AuditWithdrawReq {
+  // 提现ID
+  optional uint32 id = 1;
+  // 操作:agree=同意,refuse=拒绝
+  optional string action = 2;
+  // 拒绝原因
+  optional string memo = 3;
+}
+
+//  Withdraw delete request (删除提现记录)
+message DeleteWithdrawReq {
+  repeated uint32 ids = 1;
+}
+
+//  Money log adjust request (校准数据)
+message AdjustMoneyLogReq {}
+
+//  Money log detail (资金详情)
+message MoneyLogDetailReq {
+  uint32 id = 1;
+}
+
+message OrderGoodsBrief {
+  optional string title = 1;
+  optional string image = 2;
+  optional double price = 3;
+  optional uint32 number = 4;
+}
+
+message OrderBrief {
+  optional string order_no = 1;
+  optional string shopname = 2;
+  optional int64 createtime = 3;
+  optional int64 paymenttime = 4;
+  repeated OrderGoodsBrief goods = 5;
+}
+
+message WithdrawBrief {
+  optional double money = 1;
+  optional double handingfee = 2;
+  optional double taxes = 3;
+  optional string type = 4;
+  optional string account = 5;
+  optional string orderid = 6;
+  optional string transactionid = 7;
+  optional string memo = 8;
+  optional string status = 9;
+  optional int64 transfertime = 10;
+}
+
+message MoneyLogDetailResp {
+  MoneyLogInfo log = 1;
+  repeated OrderBrief orders = 2;
+  WithdrawBrief withdraw = 3;
+}
+
+//  Shop finance summary (商家财务汇总)
+message ShopFinanceSummaryReq {
+  uint32 shop_id = 1;
+}
+
+message ShopFinanceSummaryResp {
+  // 已支付收入总额
+  double income_total = 1;
+  // 已支付订单笔数
+  uint64 income_count = 2;
+  // 退款总额
+  double refund_total = 3;
+  // 退款笔数
+  uint64 refund_count = 4;
+  // 提现总额(含待审核)
+  double withdraw_total = 5;
+  // 待审核提现金额
+  double withdraw_pending_total = 6;
+  // 可提现余额
+  double balance = 7;
+}
+
+service Wss {
+
+  // Money log management (资金对账)
+  // group: money_log
+  rpc getMoneyLogList (MoneyLogListReq) returns (MoneyLogListResp);
+  // group: money_log
+  rpc adjustMoneyLog (AdjustMoneyLogReq) returns (BaseResp);
+  // group: money_log
+  rpc getMoneyLogDetail (MoneyLogDetailReq) returns (MoneyLogDetailResp);
+  // Withdraw management (用户提现)
+  // group: withdraw
+  rpc getWithdrawList (WithdrawListReq) returns (WithdrawListResp);
+  // group: withdraw
+  rpc createWithdraw (WithdrawInfo) returns (BaseIDUint32Resp);
+  // group: withdraw
+  rpc auditWithdraw (AuditWithdrawReq) returns (BaseResp);
+  // group: withdraw
+  rpc deleteWithdraw (DeleteWithdrawReq) returns (BaseResp);
+  // Shop finance summary (商家对账单汇总)
+  // group: finance
+  rpc getShopFinanceSummary (ShopFinanceSummaryReq) returns (ShopFinanceSummaryResp);
+}

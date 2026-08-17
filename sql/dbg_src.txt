@@ -1,0 +1,16 @@
+﻿D:\go_work\simple-admin\store-console-frontend\src\api\trade.js
+D:\go_work\simple-admin\store-console-frontend\src\router\index.js
+D:\go_work\simple-admin\store-console-frontend\src\store\auth.js
+D:\go_work\simple-admin\store-console-frontend\src\utils\format.js
+D:\go_work\simple-admin\store-console-frontend\src\utils\request.js
+D:\go_work\simple-admin\store-console-frontend\src\views\trade\Comment.vue
+D:\go_work\simple-admin\store-console-frontend\src\views\trade\GroupOrder.vue
+D:\go_work\simple-admin\store-console-frontend\src\views\trade\Order.vue
+D:\go_work\simple-admin\store-console-frontend\src\views\trade\Refund.vue
+D:\go_work\simple-admin\store-console-frontend\src\views\Dashboard.vue
+D:\go_work\simple-admin\store-console-frontend\src\views\Layout.vue
+D:\go_work\simple-admin\store-console-frontend\src\views\Login.vue
+D:\go_work\simple-admin\store-console-frontend\src\views\Role.vue
+D:\go_work\simple-admin\store-console-frontend\src\views\Staff.vue
+D:\go_work\simple-admin\store-console-frontend\src\App.vue
+D:\go_work\simple-admin\store-console-frontend\src\main.js

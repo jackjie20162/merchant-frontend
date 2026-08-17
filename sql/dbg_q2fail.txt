@@ -1,0 +1,262 @@
+﻿
+===== GET /merchant/perm/codes =====
+{
+    "code":  0,
+    "msg":  "success",
+    "data":  {
+                 "data":  [
+                              {
+                                  "code":  "dashboard:view",
+                                  "name":  "查看工作台",
+                                  "module":  "工作台"
+                              },
+                              {
+                                  "code":  "staff:list",
+                                  "name":  "查看员工",
+                                  "module":  "员工管理"
+                              },
+                              {
+                                  "code":  "staff:create",
+                                  "name":  "新增员工",
+                                  "module":  "员工管理"
+                              },
+                              {
+                                  "code":  "staff:update",
+                                  "name":  "编辑员工",
+                                  "module":  "员工管理"
+                              },
+                              {
+                                  "code":  "staff:delete",
+                                  "name":  "删除员工",
+                                  "module":  "员工管理"
+                              },
+                              {
+                                  "code":  "staff:resetpwd",
+                                  "name":  "重置员工密码",
+                                  "module":  "员工管理"
+                              },
+                              {
+                                  "code":  "role:list",
+                                  "name":  "查看角色",
+                                  "module":  "角色权限"
+                              },
+                              {
+                                  "code":  "role:save",
+                                  "name":  "新增/编辑角色",
+                                  "module":  "角色权限"
+                              },
+                              {
+                                  "code":  "role:delete",
+                                  "name":  "删除角色",
+                                  "module":  "角色权限"
+                              },
+                              {
+                                  "code":  "order:list",
+                                  "name":  "查看订单",
+                                  "module":  "交易管理"
+                              },
+                              {
+                                  "code":  "order:deliver",
+                                  "name":  "订单发货",
+                                  "module":  "交易管理"
+                              },
+                              {
+                                  "code":  "groups:list",
+                                  "name":  "查看拼团订单",
+                                  "module":  "交易管理"
+                              },
+                              {
+                                  "code":  "comment:list",
+                                  "name":  "查看评论",
+                                  "module":  "交易管理"
+                              },
+                              {
+                                  "code":  "comment:update",
+                                  "name":  "处理评论",
+                                  "module":  "交易管理"
+                              },
+                              {
+                                  "code":  "refund:list",
+                                  "name":  "查看退款",
+                                  "module":  "交易管理"
+                              },
+                              {
+                                  "code":  "refund:audit",
+                                  "name":  "审核退款",
+                                  "module":  "交易管理"
+                              },
+                              {
+                                  "code":  "goods:list",
+                                  "name":  "查看商品",
+                                  "module":  "商品管理"
+                              },
+                              {
+                                  "code":  "goods:save",
+                                  "name":  "发布/编辑商品",
+                                  "module":  "商品管理"
+                              },
+                              {
+                                  "code":  "goods:delete",
+                                  "name":  "删除商品",
+                                  "module":  "商品管理"
+                              },
+                              {
+                                  "code":  "category:list",
+                                  "name":  "查看类目",
+                                  "module":  "自定义类目"
+                              },
+                              {
+                                  "code":  "category:save",
+                                  "name":  "新增/编辑类目",
+                                  "module":  "自定义类目"
+                              },
+                              {
+                                  "code":  "category:delete",
+                                  "name":  "删除类目",
+                                  "module":  "自定义类目"
+                              },
+                              {
+                                  "code":  "shop:save",
+                                  "name":  "编辑店铺资料",
+                                  "module":  "店铺管理"
+                              },
+                              {
+                                  "code":  "brand:list",
+                                  "name":  "查看品牌",
+                                  "module":  "店铺管理"
+                              },
+                              {
+                                  "code":  "brand:save",
+                                  "name":  "新增/编辑品牌",
+                                  "module":  "店铺管理"
+                              },
+                              {
+                                  "code":  "brand:delete",
+                                  "name":  "删除品牌",
+                                  "module":  "店铺管理"
+                              },
+                              {
+                                  "code":  "attach:list",
+                                  "name":  "查看图片空间",
+                                  "module":  "店铺管理"
+                              },
+                              {
+                                  "code":  "attach:upload",
+                                  "name":  "上传图片",
+                                  "module":  "店铺管理"
+                              },
+                              {
+                                  "code":  "attach:delete",
+                                  "name":  "删除图片",
+                                  "module":  "店铺管理"
+                              },
+                              {
+                                  "code":  "page:list",
+                                  "name":  "查看装修页面",
+                                  "module":  "店铺管理"
+                              },
+                              {
+                                  "code":  "page:save",
+                                  "name":  "保存装修页面",
+                                  "module":  "店铺管理"
+                              },
+                              {
+                                  "code":  "page:delete",
+                                  "name":  "删除装修页面",
+                                  "module":  "店铺管理"
+                              },
+                              {
+                                  "code":  "coupon:list",
+                                  "name":  "查看优惠券",
+                                  "module":  "营销活动"
+                              },
+                              {
+                                  "code":  "coupon:save",
+                                  "name":  "新增/编辑优惠券",
+                                  "module":  "营销活动"
+                              },
+                              {
+                                  "code":  "coupon:delete",
+                                  "name":  "删除优惠券",
+                                  "module":  "营销活动"
+                              },
+                              {
+                                  "code":  "freight:list",
+                                  "name":  "查看运费模板",
+                                  "module":  "物流运费"
+                              },
+                              {
+                                  "code":  "freight:save",
+                                  "name":  "新增/编辑运费模板",
+                                  "module":  "物流运费"
+                              },
+                              {
+                                  "code":  "freight:delete",
+                                  "name":  "删除运费模板",
+                                  "module":  "物流运费"
+                              },
+                              {
+                                  "code":  "bill:list",
+                                  "name":  "查看对账单",
+                                  "module":  "财务管理"
+                              },
+                              {
+                                  "code":  "withdraw:list",
+                                  "name":  "查看提现记录",
+                                  "module":  "财务管理"
+                              },
+                              {
+                                  "code":  "withdraw:apply",
+                                  "name":  "申请提现",
+                                  "module":  "财务管理"
+                              },
+                              {
+                                  "code":  "withdraw:delete",
+                                  "name":  "删除提现申请",
+                                  "module":  "财务管理"
+                              },
+                              {
+                                  "code":  "shop:config",
+                                  "name":  "店铺配置",
+                                  "module":  "店铺配置"
+                              }
+                          ]
+             }
+}
+===== POST /merchant/coupon/list =====
+{
+    "code":  500,
+    "msg":  "rpc error: code = Unknown desc = common.databaseError"
+}
+===== POST /merchant/coupon/save =====
+{
+    "code":  500,
+    "msg":  "rpc error: code = Unknown desc = common.databaseError"
+}
+===== POST /merchant/freight/tpl/save create =====
+{
+    "code":  500,
+    "msg":  "rpc error: code = Unknown desc = common.databaseError"
+}
+===== POST /merchant/freight/tpl/list =====
+{
+    "code":  0,
+    "msg":  "success",
+    "data":  {
+                 "total":  1,
+                 "data":  [
+                              {
+                                  "id":  1,
+                                  "shop_id":  2,
+                                  "name":  "q2 tpl v2",
+                                  "delivery":  "5",
+                                  "isdelivery":  "1",
+                                  "valuation":  "0",
+                                  "createtime":  null,
+                                  "updatetime":  null,
+                                  "deletetime":  null,
+                                  "status":  "normal"
+                              }
+                          ]
+             }
+}

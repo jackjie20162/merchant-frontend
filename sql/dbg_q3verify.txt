@@ -1,0 +1,9 @@
+﻿
+vite 5174 listening: False
+OK 200 /src/views/marketing/Coupon.vue len=85100
+OK 200 /src/views/freight/Freight.vue len=78293
+OK 200 /src/router/index.js len=28534
+OK 200 /src/views/Layout.vue len=37411
+OK 200 /src/api/marketing.js len=3044
+OK 200 /src/api/freight.js len=4033
+DONE

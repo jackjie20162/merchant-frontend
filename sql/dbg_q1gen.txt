@@ -1,0 +1,16 @@
+﻿=== merge proto ===
+Generated D:\go_work\simple-admin\wanshop-rpc\wss.proto
+  Proto files processed: 39
+  Messages extracted: 179
+  RPCs extracted: 225
+merge exit: 0
+=== goctls rpc protoc ===
+[32mGenerating...[0m
+[32mMerge proto files successfully[0m
+[92mDone.[0m
+goctls exit: 0
+=== strip omitempty (UTF-8 safe) ===
+stripped files: 1
+=== ent generate ===
+entgen exit: 0
+=== done ===

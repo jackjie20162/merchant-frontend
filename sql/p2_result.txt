@@ -1,0 +1,19 @@
+﻿[PASS] admin login
+[PASS] admin order/list code=0
+[INFO] order total=1
+[PASS] admin order/list tab state=2
+[PASS] admin groups/list code=0
+[PASS] admin comment/list code=0
+[PASS] admin comment/list tab state=0
+[PASS] admin refund/list code=0
+[PASS] admin refund/list tab state=0
+[PASS] admin order/detail/1 has order
+[PASS] admin refund/audit route reachable (non-zero code not 403)
+[PASS] kefu login
+[PASS] kefu order/list denied(403)
+[PASS] kefu groups/list denied(403)
+[PASS] kefu comment/list denied(403)
+[PASS] kefu refund/list denied(403)
+[PASS] kefu profile 200
+
+===== RESULT: PASS=16 FAIL=0 =====

@@ -1,0 +1,112 @@
+﻿message PayInfo {
+  optional uint32 id = 1;
+  // 支付单号
+  optional string pay_no = 2;
+  // 第三方交易号
+  optional string trade_no = 3;
+  // 用户ID
+  optional int32 user_id = 4;
+  // 店铺ID
+  optional int32 shop_id = 5;
+  // 订单ID
+  optional int32 order_id = 6;
+  // 订单号
+  optional string order_no = 7;
+  // 支付方式:0=余额,1=微信,2=支付宝
+  optional string pay_type = 8;
+  // 支付状态:0=未支付,1=已支付,2=已退款
+  optional string pay_state = 9;
+  // 订单类型:goods=商品,groups=拼团
+  optional string type = 10;
+  // 订单数量
+  optional int32 number = 11;
+  // 订单总价
+  optional double price = 12;
+  // 订单金额
+  optional double order_price = 13;
+  // 快递金额
+  optional double freight_price = 14;
+  // 优惠券金额
+  optional double coupon_price = 15;
+  // 优惠金额
+  optional double discount_price = 16;
+  // 退款金额
+  optional double refund_price = 17;
+  // 实际支付
+  optional double actual_payment = 18;
+  // 总金额
+  optional double total_amount = 19;
+  // 回调通知
+  optional string notice = 20;
+  // 创建时间
+  optional int64 createtime = 21;
+  // 更新时间
+  optional int64 updatetime = 22;
+  // 删除时间
+  optional int64 deletetime = 23;
+  // 状态
+  optional string status = 24;
+
+}
+
+message PayListResp {
+  uint64 total = 1;
+  repeated PayInfo data = 2;
+}
+
+message PayListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional string pay_no = 3;
+  optional string trade_no = 4;
+  optional int32 user_id = 5;
+  optional int32 shop_id = 6;
+  optional int32 order_id = 7;
+  optional string order_no = 8;
+  optional string pay_type = 9;
+  optional string pay_state = 10;
+  optional string type = 11;
+  optional int32 number = 12;
+  optional double price = 13;
+  optional double order_price = 14;
+  optional double freight_price = 15;
+  optional double coupon_price = 16;
+  optional double discount_price = 17;
+  optional double refund_price = 18;
+  optional double actual_payment = 19;
+  optional double total_amount = 20;
+  optional string notice = 21;
+  optional int64 createtime = 22;
+  optional int64 updatetime = 23;
+  optional int64 deletetime = 24;
+  optional string status = 25;
+}
+
+
+// Prepare pay request
+message PreparePayReq {
+  // 用户ID
+  uint32 user_id = 1;
+  // 订单ID
+  uint32 order_id = 2;
+  // 支付方式:0=余额,1=微信,2=支付宝
+  string pay_type = 3;
+}
+
+// Prepare pay response
+message PreparePayResp {
+  uint32 pay_id = 1;
+  string pay_no = 2;
+  // 应付金额
+  double price = 3;
+}
+
+// Pay success request (simulated callback)
+message PaySuccessReq {
+  // 支付单ID
+  uint32 pay_id = 1;
+  // 第三方交易号
+  string trade_no = 2;
+}
+
+service Wss {

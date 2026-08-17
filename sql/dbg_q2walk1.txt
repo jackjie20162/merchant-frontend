@@ -1,0 +1,142 @@
+﻿
+===== logic methods =====
+22: func (l *MerchantLogic) shopID() uint32 {
+29: func (l *MerchantLogic) OrderList(req *wssclient.OrderListReq) (*wssclient.OrderListResp, error) {
+35: func (l *MerchantLogic) OrderDetail(id uint32) (*wssclient.OrderDetailResp, error) {
+47: func (l *MerchantLogic) OrderDeliver(req *wssclient.DeliverOrderReq) error {
+60: func (l *MerchantLogic) GroupsOrderList(req *wssclient.GroupsOrderListReq) (*wssclient.GroupsOrderListResp, error) {
+66: func (l *MerchantLogic) CommentList(req *wssclient.CommentListReq) (*wssclient.CommentListResp, error) {
+72: func (l *MerchantLogic) CommentUpdate(req *wssclient.CommentInfo) error {
+89: func (l *MerchantLogic) RefundList(req *wssclient.RefundListReq) (*wssclient.RefundListResp, error) {
+95: func (l *MerchantLogic) RefundDetail(id uint32) (*wssclient.RefundInfo, error) {
+107: func (l *MerchantLogic) RefundAudit(req *wssclient.AuditRefundReq) error {
+120: func (l *MerchantLogic) RefundReceive(id uint32) error {
+135: func (l *MerchantLogic) GoodsList(req *wssclient.GoodsListReq) (*wssclient.GoodsListResp, error) {
+141: func (l *MerchantLogic) GoodsDetail(id uint32) (*wssclient.GoodsDetailResp, error) {
+153: func (l *MerchantLogic) GoodsSave(req *wssclient.GoodsCreateFullReq) (*wssclient.BaseIDUint32Resp, error) {
+181: func (l *MerchantLogic) GoodsDelete(req *wssclient.IDsUint32Req) error {
+193: func (l *MerchantLogic) GoodsGrounding(req *wssclient.GoodsInfo) error {
+212: func (l *MerchantLogic) FreightList(req *wssclient.ShopFreightListReq) (*wssclient.ShopFreightListResp, error) {
+220: func (l *MerchantLogic) CategoryTree(req *wssclient.CategoryTreeReq) (*wssclient.CategoryTreeResp, error) {
+226: func (l *MerchantLogic) CategorySave(req *wssclient.CategoryInfo) (*wssclient.BaseIDUint32Resp, error) {
+246: func (l *MerchantLogic) CategoryDelete(req *wssclient.IDsUint32Req) error {
+260: func (l *MerchantLogic) ShopInfo() (*wssclient.ShopInfo, error) {
+265: func (l *MerchantLogic) ShopSave(req *wssclient.ShopInfo) error {
+280: func (l *MerchantLogic) BrandList(req *wssclient.BrandListReq) (*wssclient.BrandListResp, error) {
+286: func (l *MerchantLogic) BrandSave(req *wssclient.BrandInfo) (*wssclient.BaseIDUint32Resp, error) {
+307: func (l *MerchantLogic) BrandDelete(req *wssclient.IDsUint32Req) error {
+319: func (l *MerchantLogic) AttachmentList(req *wssclient.AttachmentListReq) (*wssclient.AttachmentListResp, error) {
+325: func (l *MerchantLogic) AttachmentCreate(info *wssclient.AttachmentInfo) (*wssclient.BaseIDUint32Resp, error) {
+331: func (l *MerchantLogic) AttachmentDelete(req *wssclient.IDsUint32Req) error {
+343: func (l *MerchantLogic) PageList(req *wssclient.PageListReq) (*wssclient.PageListResp, error) {
+351: func (l *MerchantLogic) PageDetail(id uint32) (*wssclient.PageInfo, error) {
+363: func (l *MerchantLogic) PageSave(req *wssclient.PageInfo) (*wssclient.BaseIDUint32Resp, error) {
+391: func (l *MerchantLogic) PageDelete(req *wssclient.IDsUint32Req) error {
+409: func (l *MerchantLogic) checkOwned(ids []uint32, getShopID func(id uint32) (int32, error)) error {
+429: func (l *MerchantLogic) CouponList(req *wssclient.CouponListReq) (*wssclient.CouponListResp, error) {
+435: func (l *MerchantLogic) CouponSave(req *wssclient.CouponInfo) (*wssclient.BaseIDUint32Resp, error) {
+455: func (l *MerchantLogic) CouponDelete(req *wssclient.IDsUint32Req) error {
+469: func (l *MerchantLogic) FreightTplList(req *wssclient.ShopFreightListReq) (*wssclient.ShopFreightListResp, error) {
+481: func (l *MerchantLogic) FreightDetail(id uint32) (*FreightDetailResp, error) {
+508: func (l *MerchantLogic) FreightSave(req *FreightSaveReq) (*wssclient.BaseIDUint32Resp, error) {
+541: func (l *MerchantLogic) syncFreightData(freightID uint32, rows []*wssclient.ShopFreightDataInfo) error {
+582: func (l *MerchantLogic) FreightDelete(req *wssclient.IDsUint32Req) error {
+617: func (l *MerchantLogic) BillList(req *wssclient.PayListReq) (*wssclient.PayListResp, error) {
+623: func (l *MerchantLogic) BillSummary() (*wssclient.ShopFinanceSummaryResp, error) {
+628: func (l *MerchantLogic) WithdrawList(req *wssclient.WithdrawListReq) (*wssclient.WithdrawListResp, error) {
+634: func (l *MerchantLogic) WithdrawApply(req *wssclient.WithdrawInfo) (*wssclient.BaseIDUint32Resp, error) {
+654: func (l *MerchantLogic) WithdrawDelete(ids []uint32) error {
+686: func (l *MerchantLogic) SettingsGet() (*wssclient.ShopSettingsInfo, error) {
+691: func (l *MerchantLogic) SettingsSave(req *wssclient.ShopSettingsInfo) error {
+===== handlers =====
+50: func MerchantOrderListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+68: func MerchantOrderDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+86: func MerchantOrderDeliverHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+103: func MerchantGroupsListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+121: func MerchantCommentListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+139: func MerchantCommentUpdateHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+156: func MerchantRefundListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+174: func MerchantRefundDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+192: func MerchantRefundAuditHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+209: func MerchantRefundReceiveHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+228: func MerchantGoodsListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+246: func MerchantGoodsDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+264: func MerchantGoodsSaveHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+282: func MerchantGoodsDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+299: func MerchantGoodsGroundingHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+316: func MerchantFreightListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+336: func MerchantCategoryTreeHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+354: func MerchantCategorySaveHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+372: func MerchantCategoryDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+391: func MerchantShopInfoHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+404: func MerchantShopSaveHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+421: func MerchantBrandListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+439: func MerchantBrandSaveHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+457: func MerchantBrandDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+483: func MerchantAttachmentUploadHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+558: func MerchantAttachmentListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+576: func MerchantAttachmentDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+595: func MerchantPageListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+613: func MerchantPageDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+631: func MerchantPageSaveHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+649: func MerchantPageDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+668: func MerchantCouponListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+686: func MerchantCouponSaveHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+704: func MerchantCouponDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+723: func MerchantFreightTplListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+741: func MerchantFreightDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+759: func MerchantFreightSaveHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+777: func MerchantFreightDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+796: type merchantBillListReq struct {
+802: func MerchantBillListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+828: func MerchantBillSummaryHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+841: type merchantWithdrawApplyReq struct {
+851: func MerchantWithdrawListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+869: func MerchantWithdrawApplyHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+894: func MerchantWithdrawDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+913: func MerchantSettingsGetHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+926: func MerchantSettingsSaveHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+===== routes tail =====
+	// 物流运费（运费模板）
+	addMerchantRoute(http.MethodPost, "/freight/tpl/list", "freight:list", MerchantFreightTplListHandler(serverCtx))
+	addMerchantRoute(http.MethodGet, "/freight/tpl/detail/:id", "freight:list", MerchantFreightDetailHandler(serverCtx))
+	addMerchantRoute(http.MethodPost, "/freight/tpl/save", "freight:save", MerchantFreightSaveHandler(serverCtx))
+	addMerchantRoute(http.MethodPost, "/freight/tpl/delete", "freight:delete", MerchantFreightDeleteHandler(serverCtx))
+	// 财务管理（对账单/提现）
+	addMerchantRoute(http.MethodPost, "/bill/list", "bill:list", MerchantBillListHandler(serverCtx))
+	addMerchantRoute(http.MethodGet, "/bill/summary", "bill:list", MerchantBillSummaryHandler(serverCtx))
+	addMerchantRoute(http.MethodPost, "/withdraw/list", "withdraw:list", MerchantWithdrawListHandler(serverCtx))
+	addMerchantRoute(http.MethodPost, "/withdraw/apply", "withdraw:apply", MerchantWithdrawApplyHandler(serverCtx))
+	addMerchantRoute(http.MethodPost, "/withdraw/delete", "withdraw:delete", MerchantWithdrawDeleteHandler(serverCtx))
+	// 店铺配置（基础设置/寄件人/退货信息）
+	addMerchantRoute(http.MethodGet, "/settings/get", "shop:config", MerchantSettingsGetHandler(serverCtx))
+	addMerchantRoute(http.MethodPost, "/settings/save", "shop:config", MerchantSettingsSaveHandler(serverCtx))
+}
+
+// staticFileHandler 上传附件静态文件服务（GET /static/:ymd/:file）
+func staticFileHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	uploadDir := svcCtx.Config.UploadDir
+	if uploadDir == "" {
+		uploadDir = "./uploads"
+	}
+	absDir, err := filepath.Abs(uploadDir)
+	if err != nil {
+		absDir = uploadDir
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req struct {
+			Ymd  string `path:"ymd"`
+			File string `path:"file"`
+		}
+		if err := httpx.Parse(r, &req, true); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		// 防路径穿越：段内不允许 ..
+		if strings.Contains(req.Ymd, "..") || strings.Contains(req.File, "..") {
+			http.NotFound(w, r)
+			return
+		}
+		http.ServeFile(w, r, filepath.Join(absDir, req.Ymd, req.File))
+	}
+}

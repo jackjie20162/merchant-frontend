@@ -1,0 +1,78 @@
+﻿
+===== withdraw schema
+package schema
+
+import (
+	"entgo.io/ent"
+	"entgo.io/ent/dialect/entsql"
+	"entgo.io/ent/schema"
+	"entgo.io/ent/schema/field"
+)
+
+// Withdraw holds the schema definition for the Withdraw entity.
+type Withdraw struct {
+	ent.Schema
+}
+
+// Fields of the Withdraw.
+func (Withdraw) Fields() []ent.Field {
+	return []ent.Field{
+		field.Uint32("id").Comment("ID"),
+		field.Uint32("user_id").Default(0).Comment("会员ID"),
+		field.Uint32("shop_id").Default(0).Comment("店铺ID:0=用户提现"),
+		field.Float("money").Default(0).Comment("金额"),
+		field.Float("handingfee").Default(0).Comment("手续费"),
+		field.Float("taxes").Default(0).Comment("税费"),
+		field.String("type").Default("").Comment("类型"),
+		field.String("account").Default("").Comment("提现账户"),
+		field.String("memo").Optional().Nillable().Comment("备注"),
+		field.String("orderid").Default("").Comment("订单号"),
+		field.String("transactionid").Default("").Comment("流水号"),
+		field.String("status").Default("created").Comment("状态:created=申请中,successed=成功,rejected=已拒绝"),
+		field.Int64("transfertime").Optional().Nillable().Comment("转账时间"),
+		field.Int64("createtime").Optional().Nillable().Comment("添加时间"),
+		field.Int64("updatetime").Optional().Nillable().Comment("更新时间"),
+	}
+}
+
+// Annotations of the Withdraw.
+func (Withdraw) Annotations() []schema.Annotation {
+	return []schema.Annotation{
+		entsql.Annotation{Table: "fa_withdraw"},
+	}
+}
+===== WithdrawApply logic
+===== L623
+func (l *MerchantLogic) BillSummary() (*wssclient.ShopFinanceSummaryResp, error) {
+	return l.svcCtx.WssRpc.GetShopFinanceSummary(l.ctx, &wssclient.ShopFinanceSummaryReq{ShopId: l.shopID()})
+}
+
+===== L634
+func (l *MerchantLogic) WithdrawApply(req *wssclient.WithdrawInfo) (*wssclient.BaseIDUint32Resp, error) {
+	if req.Money == nil || *req.Money <= 0 {
+		return nil, errors.New("提现金额必须大于0")
+	}
+	summary, err := l.svcCtx.WssRpc.GetShopFinanceSummary(l.ctx, &wssclient.ShopFinanceSummaryReq{ShopId: l.shopID()})
+	if err != nil {
+		return nil, err
+	}
+	if *req.Money > summary.GetBalance() {
+		return nil, errors.New("提现金额超过可提现余额")
+	}
+	req.Id = nil
+	req.UserId = nil
+	req.Username = nil
+	req.Status = nil
+	req.ShopId = ptrUint32(l.shopID())
+	return l.svcCtx.WssRpc.CreateWithdraw(l.ctx, req)
+}
+
+===== L691
+func (l *MerchantLogic) SettingsSave(req *wssclient.ShopSettingsInfo) error {
+	req.Id = nil
+	req.ShopId = ptrUint32(l.shopID())
+	_, err := l.svcCtx.WssRpc.UpdateShopSettings(l.ctx, req)
+	return err
+}
+
+DONE

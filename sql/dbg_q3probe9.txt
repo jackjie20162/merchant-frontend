@@ -1,0 +1,85 @@
+﻿
+===== L429 func (l *MerchantLogic) CouponList(req *wssclient.CouponListReq) (*wssclient.CouponListResp, error) {
+func (l *MerchantLogic) CouponList(req *wssclient.CouponListReq) (*wssclient.CouponListResp, error) {
+	req.ShopId = ptrInt32(int32(l.shopID()))
+	return l.svcCtx.WssRpc.GetCouponList(l.ctx, req)
+}
+
+===== L469 func (l *MerchantLogic) FreightTplList(req *wssclient.ShopFreightListReq) (*wssclient.ShopFreightListResp, error) {
+func (l *MerchantLogic) FreightTplList(req *wssclient.ShopFreightListReq) (*wssclient.ShopFreightListResp, error) {
+	req.ShopId = ptrUint32(l.shopID())
+	return l.svcCtx.WssRpc.GetShopFreightList(l.ctx, req)
+}
+
+===== L475 type FreightDetailResp struct {
+type FreightDetailResp struct {
+	Freight *wssclient.ShopFreightInfo     `json:"freight"`
+	Data    []*wssclient.ShopFreightDataInfo `json:"data"`
+}
+
+===== L481 func (l *MerchantLogic) FreightDetail(id uint32) (*FreightDetailResp, error) {
+func (l *MerchantLogic) FreightDetail(id uint32) (*FreightDetailResp, error) {
+	freight, err := l.svcCtx.WssRpc.GetShopFreightById(l.ctx, &wssclient.IDUint32Req{Id: id})
+	if err != nil {
+		return nil, err
+	}
+	if freight.GetShopId() != l.shopID() {
+		return nil, errNotOwned
+	}
+	dataResp, err := l.svcCtx.WssRpc.GetShopFreightDataList(l.ctx, &wssclient.ShopFreightDataListReq{
+		Page:      1,
+		PageSize:  200,
+		ShopId:    ptrInt32(int32(l.shopID())),
+		FreightId: ptrUint32(id),
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &FreightDetailResp{Freight: freight, Data: dataResp.GetData()}, nil
+}
+
+===== L502 type FreightSaveReq struct {
+type FreightSaveReq struct {
+	Freight *wssclient.ShopFreightInfo       `json:"freight"`
+	Data    []*wssclient.ShopFreightDataInfo `json:"data"`
+}
+
+===== L508 func (l *MerchantLogic) FreightSave(req *FreightSaveReq) (*wssclient.BaseIDUint32Resp, error) {
+func (l *MerchantLogic) FreightSave(req *FreightSaveReq) (*wssclient.BaseIDUint32Resp, error) {
+	if req.Freight == nil {
+		return nil, errors.New("运费模板信息不能为空")
+	}
+	shopID := l.shopID()
+	req.Freight.ShopId = ptrUint32(shopID)
+	var freightID uint32
+	if req.Freight.Id == nil || *req.Freight.Id == 0 {
+		resp, err := l.svcCtx.WssRpc.CreateShopFreight(l.ctx, req.Freight)
+		if err != nil {
+			return nil, err
+		}
+		freightID = resp.GetId()
+	} else {
+		freightID = *req.Freight.Id
+		old, err := l.svcCtx.WssRpc.GetShopFreightById(l.ctx, &wssclient.IDUint32Req{Id: freightID})
+		if err != nil {
+			return nil, err
+		}
+		if old.GetShopId() != shopID {
+			return nil, errNotOwned
+		}
+		if _, err = l.svcCtx.WssRpc.UpdateShopFreight(l.ctx, req.Freight); err != nil {
+			return nil, err
+		}
+	}
+	if err := l.syncFreightData(freightID, req.Data); err != nil {
+		return nil, err
+	}
+	return &wssclient.BaseIDUint32Resp{Id: freightID}, nil
+}
+
+===== L686 func (l *MerchantLogic) SettingsGet() (*wssclient.ShopSettingsInfo, error) {
+func (l *MerchantLogic) SettingsGet() (*wssclient.ShopSettingsInfo, error) {
+	return l.svcCtx.WssRpc.GetShopSettings(l.ctx, &wssclient.ShopSettingsReq{ShopId: l.shopID()})
+}
+
+DONE

@@ -1,0 +1,25 @@
+﻿[PASS] admin login
+[PASS] profile
+[PASS] shop/info
+[PASS] /merchant/order/list
+[PASS] /merchant/groups/list
+[PASS] /merchant/comment/list
+[PASS] /merchant/refund/list
+[PASS] /merchant/goods/list
+[PASS] /merchant/freight/list
+[PASS] /merchant/category/tree
+[PASS] /merchant/brand/list
+[PASS] /merchant/attachment/list
+[PASS] /merchant/page/list
+[PASS] /merchant/page/list?type=systpl
+[PASS] /merchant/staff/list
+[PASS] perm/codes
+[INFO] upload resp: {"code":0,"msg":"success","data":{"id":3,"url":"/static/20260816/e6539493d7d93889.png"}}
+[PASS] attachment/upload url=/static/20260816/e6539493d7d93889.png
+[PASS] static GET 200
+[PASS] kefu login
+[PASS] kefu order/list denied
+[PASS] kefu goods/save denied
+[PASS] kefu profile 200
+
+===== RESULT: PASS=20 FAIL=0 =====

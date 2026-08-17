@@ -1,0 +1,89 @@
+﻿
+===== DESCRIBE fa_wanlshop_coupon =====
+Field	Type	Null	Key	Default	Extra
+id	int unsigned	NO	PRI	NULL	auto_increment
+shop_id	int	NO		0	
+type	enum('reduction','discount','shipping','vip')	NO		reduction	
+name	varchar(50)	NO			
+userlevel	int unsigned	YES		0	
+usertype	enum('reduction','discount')	YES		reduction	
+price	decimal(10,2) unsigned	YES		0.00	
+discount	decimal(2,1) unsigned	YES		0.0	
+limit	decimal(10,2) unsigned	NO		0.00	
+rangetype	enum('all','goods','category')	NO		all	
+range	varchar(100)	YES			
+pretype	enum('appoint','fixed')	NO		appoint	
+validity	int unsigned	YES		0	
+startdate	date	YES		NULL	
+enddate	date	YES		NULL	
+drawlimit	int unsigned	NO		0	
+grant	varchar(10)	NO		-1	
+alreadygrant	int unsigned	NO		0	
+surplus	int unsigned	YES		0	
+content	text	YES		NULL	
+usenum	int unsigned	YES		0	
+invalid	int unsigned	YES		0	
+createtime	bigint	YES		NULL	
+updatetime	bigint	YES		NULL	
+deletetime	bigint	YES		NULL	
+===== DESCRIBE fa_wanlshop_shop_freight_data =====
+Field	Type	Null	Key	Default	Extra
+id	int unsigned	NO	PRI	NULL	auto_increment
+shop_id	int	NO		0	
+freight_id	int unsigned	NO		0	
+province	text	NO		NULL	
+citys	text	NO		NULL	
+first	int unsigned	NO		0	
+first_fee	decimal(10,2) unsigned	NO		0.00	
+additional	int unsigned	NO		0	
+additional_fee	decimal(10,2) unsigned	NO		0.00	
+createtime	bigint	YES		NULL	
+updatetime	bigint	YES		NULL	
+deletetime	bigint	YES		NULL	
+status	enum('normal','hidden')	NO		normal	
+===== DESCRIBE fa_wanlshop_shop_freight =====
+Field	Type	Null	Key	Default	Extra
+id	int unsigned	NO	PRI	NULL	auto_increment
+shop_id	int unsigned	NO		0	
+name	varchar(50)	NO			
+delivery	enum('0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18')	NO		5	
+isdelivery	enum('0','1')	NO		1	
+valuation	enum('0','1','2')	NO		0	
+createtime	bigint	YES		NULL	
+updatetime	bigint	YES		NULL	
+deletetime	bigint	YES		NULL	
+status	enum('normal','hidden')	YES		normal	
+===== freight rows =====
+id	shop_id	name	deletetime
+1	2	q2 tpl v2	NULL
+id	shop_id	freight_id	province
+1	2	1	Beijing
+2	2	1	Guangdong
+===== ent coupon schema fields =====
+field.Uint32("id").Comment("ID"),
+field.Int32("shop_id").Default(0).Comment("店铺ID"),
+field.String("type").Default("reduction").Comment("类型:reduction=满减,discount=折扣,shipping=邮费,vip=会员"),
+field.String("name").Default("").Comment("优惠券名称"),
+field.String("userlevel").Default("").Comment("会员等级(多选)"),
+field.String("usertype").Default("").Comment("用户类型"),
+field.Float("price").Default(0).Comment("优惠金额"),
+field.Float32("discount").Default(0).Comment("折扣率"),
+field.Float("limit").Default(0).Comment("使用门槛金额"),
+field.String("rangetype").Default("all").Comment("适用范围:all=全店,goods=商品,category=类目"),
+field.String("range").Default("").Comment("范围ID(多选)"),
+field.String("pretype").Default("fixed").Comment("领取方式:appoint=指定,fixed=固定"),
+field.Uint32("validity").Default(0).Comment("有效期(天)"),
+field.String("startdate").Default("").Comment("开始日期"),
+field.String("enddate").Default("").Comment("结束日期"),
+field.Uint32("drawlimit").Default(0).Comment("每人限领"),
+field.String("grant").Default("").StorageKey("grant").Comment("发放方式"),
+field.Int32("alreadygrant").Default(0).Comment("已发放数量"),
+field.Int32("surplus").Default(0).Comment("剩余数量"),
+field.String("content").Default("").Comment("使用说明"),
+field.Int32("usenum").Default(0).Comment("使用数量"),
+field.Int32("invalid").Default(0).Comment("失效数量"),
+field.Int64("createtime").Optional().Nillable().Comment("创建时间"),
+field.Int64("updatetime").Optional().Nillable().Comment("更新时间"),
+field.Int64("deletetime").Optional().Nillable().Comment("删除时间"),
+field.String("status").Default("normal").Comment("状态"),
+===== ent shopfreightdata schema fields =====

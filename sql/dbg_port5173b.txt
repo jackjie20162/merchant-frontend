@@ -1,0 +1,11 @@
+﻿
+LocalAddress LocalPort       State OwningProcess
+------------ ---------       ----- -------------
+::1               5174      Listen         31136
+::1               5173 Established         29496
+::1               5173    FinWait2         29496
+::1               5173 Established         29496
+::1               5173      Listen         29496
+
+
+

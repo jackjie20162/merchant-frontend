@@ -1,0 +1,223 @@
+﻿
+===== handlers bill/withdraw
+795: // merchantBillListReq 对账单查询（direction: income=收入,refund=退款支出）
+796: type merchantBillListReq struct {
+801: // MerchantBillListHandler 商家对账单明细
+802: func MerchantBillListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+804: var req merchantBillListReq
+818: resp, err := l.BillList(&req.PayListReq)
+827: // MerchantBillSummaryHandler 商家财务汇总
+828: func MerchantBillSummaryHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+831: resp, err := l.BillSummary()
+840: // merchantWithdrawApplyReq 提现申请请求
+841: type merchantWithdrawApplyReq struct {
+850: // MerchantWithdrawListHandler 本店提现记录
+851: func MerchantWithdrawListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+853: var req wssclient.WithdrawListReq
+859: resp, err := l.WithdrawList(&req)
+868: // MerchantWithdrawApplyHandler 申请提现
+869: func MerchantWithdrawApplyHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+871: var req merchantWithdrawApplyReq
+877: resp, err := l.WithdrawApply(&wssclient.WithdrawInfo{
+893: // MerchantWithdrawDeleteHandler 撤销提现申请
+894: func MerchantWithdrawDeleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+902: if err := l.WithdrawDelete(req.Ids); err != nil {
+===== logic bill/withdraw
+616: // BillList 商家对账单明细（pay_state:1=收入,2=退款支出）
+617: func (l *MerchantLogic) BillList(req *wssclient.PayListReq) (*wssclient.PayListResp, error) {
+622: // BillSummary 商家财务汇总（收入/退款/提现/可提现余额）
+623: func (l *MerchantLogic) BillSummary() (*wssclient.ShopFinanceSummaryResp, error) {
+627: // WithdrawList 本店提现记录
+628: func (l *MerchantLogic) WithdrawList(req *wssclient.WithdrawListReq) (*wssclient.WithdrawListResp, error) {
+630: return l.svcCtx.WssRpc.GetWithdrawList(l.ctx, req)
+633: // WithdrawApply 申请提现（校验金额不超过可提现余额）
+634: func (l *MerchantLogic) WithdrawApply(req *wssclient.WithdrawInfo) (*wssclient.BaseIDUint32Resp, error) {
+650: return l.svcCtx.WssRpc.CreateWithdraw(l.ctx, req)
+653: // WithdrawDelete 撤销提现申请（仅允许删除本店申请中状态的记录）
+654: func (l *MerchantLogic) WithdrawDelete(ids []uint32) error {
+658: resp, err := l.svcCtx.WssRpc.GetWithdrawList(l.ctx, &wssclient.WithdrawListReq{
+666: own := make(map[uint32]*wssclient.WithdrawInfo, len(resp.GetData()))
+679: _, err = l.svcCtx.WssRpc.DeleteWithdraw(l.ctx, &wssclient.DeleteWithdrawReq{Ids: ids})
+===== proto files
+D:\go_work\simple-admin\wanshop-rpc\desc\address.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\article.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\attachment.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\auth.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\brand.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\cart.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\category.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\category_attribute.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\comment.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\complaint.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\config.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\coupon.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\coupon_receive.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\feedback.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\finance.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\goods.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\goods_follow.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\goods_sku.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\goods_spu.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\groups_order.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\icon.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\link.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\merchant.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\order.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\order_address.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\order_goods.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\page.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\pay.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\pay_out_trade.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\refund.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\shop.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\shop_freight.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\shop_freight_data.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\shop_service.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\shop_settings.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\style.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\token.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\user.proto
+D:\go_work\simple-admin\wanshop-rpc\desc\wss.proto
+===== Pay message fields
+--- finance.proto:43
+message WithdrawInfo {
+  optional uint32 id = 1;
+  // 会员ID
+  optional uint32 user_id = 2;
+  // 用户名
+  optional string username = 3;
+  // 金额
+  optional double money = 4;
+  // 手续费
+  optional double handingfee = 5;
+  // 税费
+  optional double taxes = 6;
+  // 类型
+  optional string type = 7;
+  // 提现账户
+  optional string account = 8;
+  // 备注
+  optional string memo = 9;
+  // 订单号
+  optional string orderid = 10;
+  // 流水号
+  optional string transactionid = 11;
+  // 状态:created=申请中,successed=成功,rejected=已拒绝
+  optional string status = 12;
+  // 转账时间
+  optional int64 transfertime = 13;
+  // 添加时间
+  optional int64 createtime = 14;
+  // 更新时间
+  optional int64 updatetime = 15;
+  // 店铺ID:0=用户提现
+  optional uint32 shop_id = 16;
+}
+--- finance.proto:77
+message WithdrawListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional uint32 user_id = 3;
+  optional string status = 4;
+  optional string type = 5;
+  optional string account = 6;
+  optional string username = 7;
+  optional uint32 shop_id = 8;
+}
+--- finance.proto:155
+message ShopFinanceSummaryResp {
+  // 已支付收入总额
+  double income_total = 1;
+  // 已支付订单笔数
+  uint64 income_count = 2;
+  // 退款总额
+  double refund_total = 3;
+  // 退款笔数
+  uint64 refund_count = 4;
+  // 提现总额(含待审核)
+  double withdraw_total = 5;
+  // 待审核提现金额
+  double withdraw_pending_total = 6;
+  // 可提现余额
+  double balance = 7;
+}
+--- pay.proto:5
+message PayInfo {
+  optional uint32 id = 1;
+  // 支付单号
+  optional string pay_no = 2;
+  // 第三方交易号
+  optional string trade_no = 3;
+  // 用户ID
+  optional int32 user_id = 4;
+  // 店铺ID
+  optional int32 shop_id = 5;
+  // 订单ID
+  optional int32 order_id = 6;
+  // 订单号
+  optional string order_no = 7;
+  // 支付方式:0=余额,1=微信,2=支付宝
+  optional string pay_type = 8;
+  // 支付状态:0=未支付,1=已支付,2=已退款
+  optional string pay_state = 9;
+  // 订单类型:goods=商品,groups=拼团
+  optional string type = 10;
+  // 订单数量
+  optional int32 number = 11;
+  // 订单总价
+  optional double price = 12;
+  // 订单金额
+  optional double order_price = 13;
+  // 快递金额
+  optional double freight_price = 14;
+  // 优惠券金额
+  optional double coupon_price = 15;
+  // 优惠金额
+  optional double discount_price = 16;
+  // 退款金额
+  optional double refund_price = 17;
+  // 实际支付
+  optional double actual_payment = 18;
+  // 总金额
+  optional double total_amount = 19;
+  // 回调通知
+  optional string notice = 20;
+  // 创建时间
+  optional int64 createtime = 21;
+  // 更新时间
+  optional int64 updatetime = 22;
+  // 删除时间
+  optional int64 deletetime = 23;
+  // 状态
+  optional string status = 24;
+
+}
+--- pay.proto:61
+message PayListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional string pay_no = 3;
+  optional string trade_no = 4;
+  optional int32 user_id = 5;
+  optional int32 shop_id = 6;
+  optional int32 order_id = 7;
+  optional string order_no = 8;
+  optional string pay_type = 9;
+  optional string pay_state = 10;
+  optional string type = 11;
+  optional int32 number = 12;
+  optional double price = 13;
+  optional double order_price = 14;
+  optional double freight_price = 15;
+  optional double coupon_price = 16;
+  optional double discount_price = 17;
+  optional double refund_price = 18;
+  optional double actual_payment = 19;
+  optional double total_amount = 20;
+  optional string notice = 21;
+  optional int64 createtime = 22;
+  optional int64 updatetime = 23;
+  optional int64 deletetime = 24;
+  optional string status = 25;
+}
+DONE

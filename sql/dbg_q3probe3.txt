@@ -1,0 +1,6 @@
+﻿
+===== coupon/freight req types in internal/types =====
+FILE D:\go_work\simple-admin\wanshop-api\internal\types\types.go
+===== delivery enum candidates (PHP source) =====
+===== freight controller/logic in PHP =====
+DONE

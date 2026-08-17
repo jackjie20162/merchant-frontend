@@ -1,0 +1,91 @@
+﻿
+hop_types.go L308 type CouponListPageReq struct {
+hop_types.go L318 type CouponDetailPathReq struct {
+hop_types.go L324 type CouponInfoResp struct {
+hop_types.go L358 type DrawCouponReq struct {
+hop_types.go L364 type DrawCouponResp struct {
+===== struct bodies =====
+type CouponListPageReq struct {
+	// 第几页
+	Page uint64 `form:"page,default=1"`
+	// 单页数据行数
+	PageSize uint64 `form:"pageSize,default=10"`
+	// 店铺ID
+	ShopId int32 `form:"shopId,optional"`
+}
+
+type CouponDetailPathReq struct {
+	// 优惠券ID
+	Id uint32 `path:"id"`
+}
+
+type CouponInfoResp struct {
+	// ID
+	Id uint32 `json:"id"`
+	// 店铺ID
+	ShopId int32 `json:"shopId"`
+	// 类型:reduction=满减,discount=折扣,shipping=邮费,vip=会员
+	Type string `json:"type"`
+	// 优惠券名称
+	Name string `json:"name"`
+	// 优惠金额
+	Price float64 `json:"price"`
+	// 折扣率
+	Discount float32 `json:"discount"`
+	// 使用门槛金额
+	Limit float64 `json:"limit"`
+	// 适用范围:all=全店,goods=商品,category=类目
+	Rangetype string `json:"rangetype"`
+	// 范围ID(多选)
+	Range string `json:"range"`
+	// 有效期(天)
+	Validity uint32 `json:"validity"`
+	// 开始日期
+	Startdate string `json:"startdate"`
+	// 结束日期
+	Enddate string `json:"enddate"`
+	// 每人限领
+	Drawlimit uint32 `json:"drawlimit"`
+	// 剩余数量
+	Surplus int32 `json:"surplus"`
+	// 使用说明
+	Content string `json:"content"`
+}
+
+type DrawCouponReq struct {
+	// 优惠券模板ID
+	CouponId uint32 `json:"couponId"`
+}
+
+type DrawCouponResp struct {
+	// 领取记录ID
+	Id uint32 `json:"id"`
+}
+
+===== routes for coupon/freight/bill/withdraw/settings =====
+L78 Path:    "/api/coupon/list",
+L79 Handler: CouponListHandler(serverCtx),
+L83 Path:    "/api/coupon/detail/:id",
+L84 Handler: CouponDetailHandler(serverCtx),
+L117 Path:    "/api/coupon/draw",
+L118 Handler: DrawCouponHandler(serverCtx),
+L310 {Method: http.MethodPost, Path: "/freight/list", Handler: AdminFreightListHandler(serverCtx)},
+L327 {Method: http.MethodPost, Path: "/withdraw/list", Handler: AdminWithdrawListHandler(serverCtx)},
+L328 {Method: http.MethodPost, Path: "/withdraw/audit", Handler: AdminWithdrawAuditHandler(serverCtx)},
+L329 {Method: http.MethodPost, Path: "/withdraw/delete", Handler: AdminWithdrawDeleteHandler(serverCtx)},
+L420 addMerchantRoute(http.MethodPost, "/freight/list", "goods:list", MerchantFreightListHandler(serverCtx))
+L438 addMerchantRoute(http.MethodPost, "/coupon/list", "coupon:list", MerchantCouponListHandler(serverCtx))
+L439 addMerchantRoute(http.MethodPost, "/coupon/save", "coupon:save", MerchantCouponSaveHandler(serverCtx))
+L440 addMerchantRoute(http.MethodPost, "/coupon/delete", "coupon:delete", MerchantCouponDeleteHandler(serverCtx))
+L442 addMerchantRoute(http.MethodPost, "/freight/tpl/list", "freight:list", MerchantFreightTplListHandler(serverCtx))
+L443 addMerchantRoute(http.MethodGet, "/freight/tpl/detail/:id", "freight:list", MerchantFreightDetailHandler(serverCtx))
+L444 addMerchantRoute(http.MethodPost, "/freight/tpl/save", "freight:save", MerchantFreightSaveHandler(serverCtx))
+L445 addMerchantRoute(http.MethodPost, "/freight/tpl/delete", "freight:delete", MerchantFreightDeleteHandler(serverCtx))
+L447 addMerchantRoute(http.MethodPost, "/bill/list", "bill:list", MerchantBillListHandler(serverCtx))
+L448 addMerchantRoute(http.MethodGet, "/bill/summary", "bill:list", MerchantBillSummaryHandler(serverCtx))
+L449 addMerchantRoute(http.MethodPost, "/withdraw/list", "withdraw:list", MerchantWithdrawListHandler(serverCtx))
+L450 addMerchantRoute(http.MethodPost, "/withdraw/apply", "withdraw:apply", MerchantWithdrawApplyHandler(serverCtx))
+L451 addMerchantRoute(http.MethodPost, "/withdraw/delete", "withdraw:delete", MerchantWithdrawDeleteHandler(serverCtx))
+L453 addMerchantRoute(http.MethodGet, "/settings/get", "shop:config", MerchantSettingsGetHandler(serverCtx))
+L454 addMerchantRoute(http.MethodPost, "/settings/save", "shop:config", MerchantSettingsSaveHandler(serverCtx))
+DONE

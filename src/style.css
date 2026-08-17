@@ -13,11 +13,10 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
+/* 整体布局滚动由 Layout 内部容器接管，此处不隐藏溢出 */
 #app {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 }

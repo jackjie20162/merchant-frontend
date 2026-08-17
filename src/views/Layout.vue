@@ -139,10 +139,16 @@ function onLogout() {
 
 <style scoped>
 .layout {
-  min-height: 100vh;
+  /* 固定满屏高，侧栏与内容区各自内部滚动 */
+  height: 100vh;
 }
 .layout-aside {
   background: #1f2937;
+  overflow-y: auto;
+}
+.layout-main {
+  background: #f3f4f6;
+  overflow-y: auto;
 }
 .logo {
   color: #fff;
@@ -176,8 +182,5 @@ function onLogout() {
 }
 .nickname {
   font-size: 14px;
-}
-.layout-main {
-  background: #f3f4f6;
 }
 </style>

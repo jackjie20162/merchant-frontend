@@ -1,7 +1,7 @@
 <template>
   <el-container class="layout">
     <el-aside width="210px" class="layout-aside">
-      <div class="logo">商家控制台</div>
+      <div class="logo">商户控制台</div>
       <el-menu :default-active="$route.path" router class="layout-menu">
         <template v-for="item in visibleMenus" :key="item.title">
           <el-sub-menu v-if="item.children" :index="item.title">
@@ -44,18 +44,51 @@ import { auth, fetchProfile, hasPerm, isOwner, logout } from '../store/auth'
 const router = useRouter()
 const ready = ref(false)
 
-// 菜单按权限码过滤（支持分组，组内任一可见则分组可见）
 const menus = [
   { path: '/dashboard', title: '工作台', perm: 'dashboard:view' },
+  {
+    index: 'hwsj-center',
+    title: '数全宝商户中心',
+    children: [
+      { path: '/plugin/hwsj/dashboard/index', title: '数据统计' },
+      { path: '/plugin/hwsj/member/index', title: '会员管理' },
+      { path: '/plugin/hwsj/orders/index', title: '订单与对账' },
+      { path: '/plugin/hwsj/reconciliation/index', title: '对账差异' },
+      { path: '/plugin/hwsj/flows/index', title: '资金流水' },
+      { path: '/plugin/hwsj/messages/index', title: '消息提醒' },
+      { path: '/plugin/hwsj/profile/index', title: '商户信息' },
+      { path: '/plugin/hwsj/recharge/index', title: '预存款充值' },
+      { path: '/plugin/hwsj/huifu-enter/index', title: '汇付进件' },
+      { path: '/plugin/hwsj/withdraw/index', title: '提现管理' },
+      { path: '/plugin/hwsj/apikey/index', title: 'API Key 管理' },
+    ],
+  },
+  {
+    index: 'temu-center',
+    title: 'Temu 网关',
+    children: [
+      { path: '/plugin/temu/key/index', title: '用户密钥' },
+      { path: '/plugin/temu/logs/index', title: '请求记录' },
+      { path: '/plugin/temu/debug/index', title: '接口调试' },
+    ],
+  },
   {
     title: '交易管理',
     children: [
       { path: '/trade/order', title: '商品订单', perm: 'order:list' },
-      { path: '/trade/groups', title: '拼团订单', perm: 'groups:list' },
       { path: '/trade/comment', title: '商品评论', perm: 'comment:list' },
       { path: '/trade/refund', title: '退款管理', perm: 'refund:list' },
     ],
   },
+  {
+    title: '阶梯拼团',
+    children: [
+      { path: '/groups/goods', title: '商品列表', perm: 'groups:goods:list' },
+      { path: '/groups/manage', title: '拼团管理', perm: 'groups:manage:list' },
+      { path: '/groups/order', title: '订单管理', perm: 'groups:list' },
+    ],
+  },
+  { path: '/find', title: '种草短视频', perm: 'find:list' },
   {
     title: '商品管理',
     children: [
@@ -92,6 +125,7 @@ const menus = [
   { path: '/staff', title: '员工管理', perm: 'staff:list' },
   { path: '/role', title: '角色权限', perm: 'role:list' },
 ]
+
 const visibleMenus = computed(() =>
   menus
     .map((m) =>
@@ -102,7 +136,6 @@ const visibleMenus = computed(() =>
     .filter((m) => (m.children ? m.children.length > 0 : !m.perm || hasPerm(m.perm))),
 )
 
-// 平铺后的第一个可见菜单路径（无权限时兼作兑底跳转）
 const firstVisiblePath = computed(() => {
   for (const m of visibleMenus.value) {
     if (m.children) return m.children[0]?.path
@@ -121,7 +154,6 @@ onMounted(async () => {
   try {
     await fetchProfile()
     ready.value = true
-    // 无权限访问当前路由时跳到第一个可见菜单
     const perm = router.currentRoute.value.meta?.perm
     if (perm && !hasPerm(perm)) {
       router.replace(firstVisiblePath.value)
@@ -139,17 +171,19 @@ function onLogout() {
 
 <style scoped>
 .layout {
-  /* 固定满屏高，侧栏与内容区各自内部滚动 */
   height: 100vh;
 }
+
 .layout-aside {
   background: #1f2937;
   overflow-y: auto;
 }
+
 .layout-main {
   background: #f3f4f6;
   overflow-y: auto;
 }
+
 .logo {
   color: #fff;
   font-size: 16px;
@@ -157,6 +191,7 @@ function onLogout() {
   text-align: center;
   padding: 18px 0;
 }
+
 .layout-menu {
   border-right: none;
   background: transparent;
@@ -165,6 +200,7 @@ function onLogout() {
   --el-menu-hover-bg-color: #374151;
   --el-menu-active-color: #f59e0b;
 }
+
 .layout-header {
   display: flex;
   align-items: center;
@@ -172,14 +208,17 @@ function onLogout() {
   background: #fff;
   border-bottom: 1px solid #e5e7eb;
 }
+
 .shop-name {
   font-weight: 600;
 }
+
 .user-area {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .nickname {
   font-size: 14px;
 }

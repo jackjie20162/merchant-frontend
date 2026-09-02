@@ -1,14 +1,14 @@
-# q3 probe: locate wanshop-api and inspect coupon/freight list filters (ASCII only)
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q3probe.txt'
+# q3 probe: locate zzhshopR2-api and inspect coupon/freight list filters (ASCII only)
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q3probe.txt'
 '' | Out-File $out -Encoding UTF8
 
 $root = 'D:\go_work\simple-admin'
-$dirs = Get-ChildItem $root -Directory | Where-Object { $_.Name -like 'wanshop*' }
+$dirs = Get-ChildItem $root -Directory | Where-Object { $_.Name -like 'zzhshopR2*' }
 foreach ($d in $dirs) { Write-Output ("DIR " + $d.FullName) | Out-File $out -Append -Encoding UTF8 }
 
 $apiRoot = $null
-foreach ($d in $dirs) { if ($d.Name -eq 'wanshop-api') { $apiRoot = $d.FullName } }
-if (-not $apiRoot) { Write-Output 'wanshop-api NOT FOUND' | Out-File $out -Append -Encoding UTF8; exit }
+foreach ($d in $dirs) { if ($d.Name -eq 'zzhshopR2-api') { $apiRoot = $d.FullName } }
+if (-not $apiRoot) { Write-Output 'zzhshopR2-api NOT FOUND' | Out-File $out -Append -Encoding UTF8; exit }
 
 # coupon list logic
 Write-Output '===== coupon list logic =====' | Out-File $out -Append -Encoding UTF8
@@ -22,7 +22,7 @@ foreach ($x in $fs) { Write-Output ('FILE ' + $x.FullName) | Out-File $out -Appe
 
 # proto req fields for coupon list / freight tpl list
 Write-Output '===== proto list reqs =====' | Out-File $out -Append -Encoding UTF8
-$proto = Get-ChildItem -Recurse 'D:\go_work\simple-admin\wanshop-rpc' -Filter '*.proto' -ErrorAction SilentlyContinue
+$proto = Get-ChildItem -Recurse 'D:\go_work\simple-admin\zzhshopR2-rpc' -Filter '*.proto' -ErrorAction SilentlyContinue
 foreach ($p in $proto) {
     $hits = Select-String -Path $p.FullName -Pattern 'CouponListReq|ShopFreightListReq|ShopFreightTplListReq' -Context 0,12 -Encoding UTF8
     foreach ($h in $hits) { Write-Output ($p.Name + ':' + $h.LineNumber) | Out-File $out -Append -Encoding UTF8; ($h.Context.PostContext -join "`n") | Out-File $out -Append -Encoding UTF8 }

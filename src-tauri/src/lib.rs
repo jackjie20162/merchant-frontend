@@ -15,7 +15,7 @@ pub fn run() {
 
     let app_dir = {
         let home = dirs::home_dir().expect("failed to get home directory");
-        let dir = home.join(".store-console-frontend").join("app");
+        let dir = home.join(".merchant-frontend").join("app");
         std::fs::create_dir_all(&dir).expect("failed to create app directory");
         dir
     };
@@ -45,7 +45,7 @@ pub fn run() {
 
     ])
     .setup(|_app| {
-        log::info!("store-console-frontend app initialised");
+        log::info!("merchant-frontend app initialised");
         Ok(())
     })
     .run(tauri::generate_context!())

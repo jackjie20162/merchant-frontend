@@ -1,4 +1,4 @@
-# store-console-frontend
+# merchant-frontend
 
 A Tauri + Vue desktop application.
 
@@ -9,10 +9,13 @@ A Tauri + Vue desktop application.
 npm install
 ```
 
-2. Replace all `store-console-frontend` placeholders with your actual project name.
+2. Replace all `merchant-frontend` placeholders with your actual project name.
 
 3. Run development server:
 ```bash
+
+npm run dev
+
 npm run tauri dev
 ```
 

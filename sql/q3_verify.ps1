@@ -1,5 +1,5 @@
 # q3 verify: vite dev server transforms new pages (ASCII only)
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q3verify.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q3verify.txt'
 '' | Out-File $out -Encoding UTF8
 
 $listen = Get-NetTCPConnection -LocalPort 5174 -State Listen -ErrorAction SilentlyContinue

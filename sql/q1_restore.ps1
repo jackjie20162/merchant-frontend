@@ -1,6 +1,6 @@
 # q1 恢复：用备份还原 internal/ 与 wss.go（保留新生成的 server 骨架/wssclient/types）
 $ErrorActionPreference = 'Stop'
-$root = 'D:\go_work\simple-admin\wanshop-rpc'
+$root = 'D:\go_work\simple-admin\zzhshopR2-rpc'
 $bak = Join-Path $root 'q1_backup'
 Remove-Item (Join-Path $root 'internal') -Recurse -Force
 Copy-Item (Join-Path $bak 'internal') (Join-Path $root 'internal') -Recurse

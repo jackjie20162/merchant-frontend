@@ -7,7 +7,7 @@ $salt2 = 'd4e5f6'
 $h1 = Get-MD5 ((Get-MD5 '123456') + $salt1)
 $h2 = Get-MD5 ((Get-MD5 '123456') + $salt2)
 
-$sqlPath = 'D:\go_work\simple-admin\store-console-frontend\sql\reset_pwd.sql'
+$sqlPath = 'D:\go_work\simple-admin\merchant-frontend\sql\reset_pwd.sql'
 @"
 USE simple_admin;
 UPDATE fa_wanlshop_merchant SET password='$h1', salt='$salt1' WHERE id=1;

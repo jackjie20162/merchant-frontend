@@ -1,5 +1,5 @@
 $base = 'http://127.0.0.1:9108'
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q2fail.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q2fail.txt'
 '' | Out-File -Encoding utf8 $out
 
 function PostJson($url, $token, $bodyObj) {

@@ -1,6 +1,6 @@
 # q1 生成链：merge proto -> goctls rpc -> 去omitempty -> ent generate
-Set-Location D:\go_work\simple-admin\wanshop-rpc
-$log = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q1gen.txt'
+Set-Location D:\go_work\simple-admin\zzhshopR2-rpc
+$log = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q1gen.txt'
 
 '=== merge proto ===' | Out-File $log -Encoding utf8
 node merge_proto.mjs 2>&1 | Out-File $log -Append -Encoding utf8

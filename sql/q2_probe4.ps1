@@ -1,6 +1,6 @@
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q2stub.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q2stub.txt'
 '' | Out-File -Encoding utf8 $out
-$dirs = @('D:\go_work\simple-admin\wanshop-rpc\internal\logic\shopfreightdata', 'D:\go_work\simple-admin\wanshop-rpc\internal\logic\shopfreight', 'D:\go_work\simple-admin\wanshop-rpc\internal\logic\coupon')
+$dirs = @('D:\go_work\simple-admin\zzhshopR2-rpc\internal\logic\shopfreightdata', 'D:\go_work\simple-admin\zzhshopR2-rpc\internal\logic\shopfreight', 'D:\go_work\simple-admin\zzhshopR2-rpc\internal\logic\coupon')
 foreach ($d in $dirs) {
     Add-Content $out ('===== ' + $d + ' =====')
     Get-ChildItem $d -File -ErrorAction SilentlyContinue | ForEach-Object {

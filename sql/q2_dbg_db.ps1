@@ -1,4 +1,4 @@
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q2db.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q2db.txt'
 '' | Out-File -Encoding utf8 $out
 
 Add-Content $out '===== DESCRIBE fa_wanlshop_coupon ====='
@@ -15,7 +15,7 @@ docker exec mysql mysql -uroot -p123456 simple_admin -e "SELECT id,shop_id,name,
 docker exec mysql mysql -uroot -p123456 simple_admin -e "SELECT id,shop_id,freight_id,province FROM fa_wanlshop_shop_freight_data;" 2>$null | ForEach-Object { Add-Content $out $_ }
 
 Add-Content $out '===== ent coupon schema fields ====='
-Select-String -Path 'D:\go_work\simple-admin\wanshop-rpc\ent\schema\coupon.go' -Pattern 'field\.' | ForEach-Object { Add-Content $out $_.Line.Trim() }
+Select-String -Path 'D:\go_work\simple-admin\zzhshopR2-rpc\ent\schema\coupon.go' -Pattern 'field\.' | ForEach-Object { Add-Content $out $_.Line.Trim() }
 
 Add-Content $out '===== ent shopfreightdata schema fields ====='
-Select-String -Path 'D:\go_work\simple-admin\wanshop-rpc\ent\schema\shopfreightdata.go' -Pattern 'field\.' | ForEach-Object { Add-Content $out $_.Line.Trim() }
+Select-String -Path 'D:\go_work\simple-admin\zzhshopR2-rpc\ent\schema\shopfreightdata.go' -Pattern 'field\.' | ForEach-Object { Add-Content $out $_.Line.Trim() }

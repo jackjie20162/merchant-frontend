@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `fa_wanlshop_shop_role` (
 
 -- 商家主账号：admin / 123456（绑定店铺2）
 INSERT INTO `fa_wanlshop_merchant` (`id`, `shop_id`, `username`, `password`, `salt`, `nickname`, `createtime`, `updatetime`)
-VALUES (1, 2, 'admin', 'a4a942d189f8ef654712d609bf8fd0e3', 'wanshop1', '店主', UNIX_TIMESTAMP(), UNIX_TIMESTAMP())
+VALUES (1, 2, 'admin', 'a4a942d189f8ef654712d609bf8fd0e3', 'zzhshopR21', '店主', UNIX_TIMESTAMP(), UNIX_TIMESTAMP())
 ON DUPLICATE KEY UPDATE `shop_id` = 2, `updatetime` = UNIX_TIMESTAMP();
 
 -- 内置角色：客服（员工管理只读 + 工作台）
@@ -93,5 +93,5 @@ ON DUPLICATE KEY UPDATE `shop_id` = 2, `updatetime` = UNIX_TIMESTAMP();
 
 -- 演示员工：kefu / 123456（角色=客服）
 INSERT INTO `fa_wanlshop_shop_staff` (`id`, `shop_id`, `merchant_id`, `username`, `password`, `salt`, `nickname`, `role_id`, `createtime`, `updatetime`)
-VALUES (1, 2, 1, 'kefu', '591b36401fe92a36592aad4831084a2d', 'wanshop2', '客服小王', 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP())
+VALUES (1, 2, 1, 'kefu', '591b36401fe92a36592aad4831084a2d', 'zzhshopR22', '客服小王', 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP())
 ON DUPLICATE KEY UPDATE `shop_id` = 2, `updatetime` = UNIX_TIMESTAMP();

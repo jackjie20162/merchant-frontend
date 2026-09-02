@@ -1,0 +1,26 @@
+﻿
+===== candidate tables =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Tables_in_simple_admin (%api%)
+sys_apis
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Tables_in_simple_admin (%casbin%)
+casbin_rules
+casbin_rules2
+===== fix name column (cs: match lowercase) =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+name_left
+0
+===== menus after =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+menu_left
+0
+mysql: [Warning] Using a password on the command line interface can be insecure.
+id	path	component	name
+35	/zzhshopR2_dir	LAYOUT	ZzhshopR2Management
+36	/zzhshopR2/goods	/plugin/zzhshopR2/views/goods/index	ZzhshopR2GoodsManagement
+37	/zzhshopR2/category	/plugin/zzhshopR2/views/category/index	ZzhshopR2CategoryManagement
+38	/zzhshopR2/shop		ZzhshopR2ShopManagement
+39	/zzhshopR2/order		ZzhshopR2OrderManagement
+40	/zzhshopR2/diy/page	/plugin/zzhshopR2/views/diy/page/index	ZzhshopR2PageManagement

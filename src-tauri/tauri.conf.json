@@ -1,8 +1,8 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "store-console-frontend",
+  "productName": "merchant-frontend",
   "version": "0.1.0",
-  "identifier": "com.store-console-frontend.app",
+  "identifier": "com.merchant-frontend.app",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:5173",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "store-console-frontend",
+        "title": "merchant-frontend",
         "width": 800,
         "height": 600,
         "resizable": true,
@@ -38,7 +38,7 @@
   "plugins": {
     "sql": {
       "preload": [
-        "sqlite:~/.store-console-frontend/app/app.db"
+        "sqlite:~/.merchant-frontend/app/app.db"
       ]
     }
   }

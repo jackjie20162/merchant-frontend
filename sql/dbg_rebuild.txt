@@ -1,7 +1,5 @@
 ﻿
-stopped api pid=30912
-stopped rpc pid=22772
 rpc build ok
 api build ok
-listening port=9108 pid=19864
-listening port=9201 pid=28692
+listening port=9108 pid=32392
+listening port=9201 pid=5528

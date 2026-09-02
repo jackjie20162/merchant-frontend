@@ -1,5 +1,5 @@
 # probe region data source in php (ASCII only)
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_region_data.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_region_data.txt'
 '' | Out-File $out -Encoding UTF8
 
 $phpRoot = (Get-ChildItem 'D:\go_work\simple-admin' -Directory | Where-Object { $_.Name -like 'php*' } | Select-Object -First 1).FullName

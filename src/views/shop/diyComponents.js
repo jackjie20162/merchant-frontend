@@ -1,5 +1,5 @@
 /**
- * DIY 页面组件注册表（移植自后台 plugin/wanshop diyComponents.ts）
+ * DIY 页面组件注册表（移植自后台 plugin/zzhshopR2 diyComponents.ts）
  * 组件默认值与 PHP wanlshop page.js module 定义保持一致，
  * item 结构: { name, type, style, params, data }
  */

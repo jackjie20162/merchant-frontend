@@ -1,14 +1,14 @@
 # probe region source (ASCII only)
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_region.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_region.txt'
 '' | Out-File $out -Encoding UTF8
 
 # address schema
 Write-Output '===== address schema' | Out-File $out -Append -Encoding UTF8
-Get-Content 'D:\go_work\simple-admin\wanshop-rpc\ent\schema\address.go' -Encoding UTF8 | Out-File $out -Append -Encoding UTF8
+Get-Content 'D:\go_work\simple-admin\zzhshopR2-rpc\ent\schema\address.go' -Encoding UTF8 | Out-File $out -Append -Encoding UTF8
 
 # address proto
 Write-Output '===== address proto' | Out-File $out -Append -Encoding UTF8
-Get-Content 'D:\go_work\simple-admin\wanshop-rpc\desc\address.proto' -Encoding UTF8 | Out-File $out -Append -Encoding UTF8
+Get-Content 'D:\go_work\simple-admin\zzhshopR2-rpc\desc\address.proto' -Encoding UTF8 | Out-File $out -Append -Encoding UTF8
 
 # find php source dir dynamically to avoid Chinese path in script
 Write-Output '===== php region select list' | Out-File $out -Append -Encoding UTF8

@@ -1,5 +1,5 @@
 # q5 verify: vite transforms settings page (ASCII only)
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q5verify.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q5verify.txt'
 '' | Out-File $out -Encoding UTF8
 
 foreach ($p in @('/src/views/shop/Settings.vue', '/src/api/shop.js', '/src/router/index.js', '/src/views/Layout.vue')) {

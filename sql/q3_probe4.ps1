@@ -1,7 +1,7 @@
 # q3 probe4: dump coupon/freight related type defs from types.go (ASCII only)
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q3probe4.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q3probe4.txt'
 '' | Out-File $out -Encoding UTF8
-$f = 'D:\go_work\simple-admin\wanshop-api\internal\types\types.go'
+$f = 'D:\go_work\simple-admin\zzhshopR2-api\internal\types\types.go'
 
 Write-Output '===== all type names containing Coupon/Freight/Withdraw/Settings/Bill =====' | Out-File $out -Append -Encoding UTF8
 $names = Select-String -Path $f -Pattern '^type (\w*(Coupon|Freight|Withdraw|Settings|Bill)\w*)' -Encoding UTF8

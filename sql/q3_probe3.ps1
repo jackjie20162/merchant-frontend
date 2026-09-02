@@ -1,7 +1,7 @@
 # q3 probe3: api types req defs + delivery enum values (ASCII only)
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q3probe3.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q3probe3.txt'
 '' | Out-File $out -Encoding UTF8
-$api = 'D:\go_work\simple-admin\wanshop-api'
+$api = 'D:\go_work\simple-admin\zzhshopR2-api'
 
 Write-Output '===== coupon/freight req types in internal/types =====' | Out-File $out -Append -Encoding UTF8
 $typesFile = Get-ChildItem -Recurse $api -Filter 'types.go' -ErrorAction SilentlyContinue | Select-Object -First 3

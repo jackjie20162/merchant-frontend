@@ -1,7 +1,7 @@
 # q3 probe9: FreightDetail/FreightSave logic impl (ASCII only)
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q3probe9.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q3probe9.txt'
 '' | Out-File $out -Encoding UTF8
-$f = 'D:\go_work\simple-admin\wanshop-api\internal\logic\merchant\merchant_biz_logic.go'
+$f = 'D:\go_work\simple-admin\zzhshopR2-api\internal\logic\merchant\merchant_biz_logic.go'
 $lines = Get-Content $f -Encoding UTF8
 for ($i = 0; $i -lt $lines.Count; $i++) {
     if ($lines[$i] -match 'func \(l \*MerchantLogic\) (FreightDetail|FreightSave|FreightTplList|CouponList|SettingsGet)|type FreightSaveReq|type FreightDetailResp|type freightDetailResp') {

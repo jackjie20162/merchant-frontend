@@ -1,0 +1,24 @@
+﻿
+===== BEFORE =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+apis_cnt
+0
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1054 (42S22) at line 1: Unknown column 'p_type' in 'where clause'
+mysql: [Warning] Using a password on the command line interface can be insecure.
+cb2_cnt
+0
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+===== AFTER =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+apis_left
+0
+mysql: [Warning] Using a password on the command line interface can be insecure.
+cb1_left
+0
+mysql: [Warning] Using a password on the command line interface can be insecure.
+cb2_left
+0
+mysql: [Warning] Using a password on the command line interface can be insecure.

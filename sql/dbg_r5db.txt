@@ -1,0 +1,43 @@
+﻿
+===== BEFORE =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+menu_cnt
+32
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1146 (42S02) at line 1: Table 'simple_admin.sys_api' doesn't exist
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1146 (42S02) at line 1: Table 'simple_admin.casbin_rule' doesn't exist
+--- sample menus ---
+mysql: [Warning] Using a password on the command line interface can be insecure.
+id	path	component	name
+35	/wanshop_dir	LAYOUT	WanshopManagement
+36	/wanshop/goods	/plugin/wanshop/views/goods/index	WanshopGoodsManagement
+37	/wanshop/category	/plugin/wanshop/views/category/index	WanshopCategoryManagement
+38	/wanshop/shop		WanshopShopManagement
+39	/wanshop/order		WanshopOrderManagement
+40	/wanshop/diy/page	/plugin/wanshop/views/diy/page/index	WanshopPageManagement
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1146 (42S02) at line 1: Table 'simple_admin.sys_api' doesn't exist
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1146 (42S02) at line 1: Table 'simple_admin.casbin_rule' doesn't exist
+===== AFTER =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+menu_left
+0
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1146 (42S02) at line 1: Table 'simple_admin.sys_api' doesn't exist
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1146 (42S02) at line 1: Table 'simple_admin.casbin_rule' doesn't exist
+--- sample menus after ---
+mysql: [Warning] Using a password on the command line interface can be insecure.
+id	path	component	name
+35	/zzhshopR2_dir	LAYOUT	WanshopManagement
+36	/zzhshopR2/goods	/plugin/zzhshopR2/views/goods/index	WanshopGoodsManagement
+37	/zzhshopR2/category	/plugin/zzhshopR2/views/category/index	WanshopCategoryManagement
+38	/zzhshopR2/shop		WanshopShopManagement
+39	/zzhshopR2/order		WanshopOrderManagement
+40	/zzhshopR2/diy/page	/plugin/zzhshopR2/views/diy/page/index	WanshopPageManagement

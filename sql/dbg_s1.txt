@@ -1,0 +1,61 @@
+﻿
+REF: \store-console-frontend\package-lock.json
+REF: \store-console-frontend\package.json
+REF: \store-console-frontend\README.md
+REF: \store-console-frontend\sql\dbg_list.ps1
+REF: \store-console-frontend\sql\q10_probe.ps1
+REF: \store-console-frontend\sql\q1_build.ps1
+REF: \store-console-frontend\sql\q1_db.ps1
+REF: \store-console-frontend\sql\q1_gen.ps1
+REF: \store-console-frontend\sql\q1_restart.ps1
+REF: \store-console-frontend\sql\q2_dbfix.ps1
+REF: \store-console-frontend\sql\q2_dbfix2.ps1
+REF: \store-console-frontend\sql\q2_dbg_db.ps1
+REF: \store-console-frontend\sql\q2_dbg_fail.ps1
+REF: \store-console-frontend\sql\q2_probe.ps1
+REF: \store-console-frontend\sql\q2_probe2.ps1
+REF: \store-console-frontend\sql\q2_probe3.ps1
+REF: \store-console-frontend\sql\q2_probe4.ps1
+REF: \store-console-frontend\sql\q2_probe5.ps1
+REF: \store-console-frontend\sql\q2_walk_probe.ps1
+REF: \store-console-frontend\sql\q2_walk_probe2.ps1
+REF: \store-console-frontend\sql\q2_walk_probe3.ps1
+REF: \store-console-frontend\sql\q3_probe.ps1
+REF: \store-console-frontend\sql\q3_probe2.ps1
+REF: \store-console-frontend\sql\q3_probe3.ps1
+REF: \store-console-frontend\sql\q3_probe4.ps1
+REF: \store-console-frontend\sql\q3_probe5.ps1
+REF: \store-console-frontend\sql\q3_probe6.ps1
+REF: \store-console-frontend\sql\q3_probe7.ps1
+REF: \store-console-frontend\sql\q3_probe8.ps1
+REF: \store-console-frontend\sql\q3_probe9.ps1
+REF: \store-console-frontend\sql\q3_verify.ps1
+REF: \store-console-frontend\sql\q4_probe.ps1
+REF: \store-console-frontend\sql\q4_probe2.ps1
+REF: \store-console-frontend\sql\q4_verify.ps1
+REF: \store-console-frontend\sql\q5_freight_logic_probe.ps1
+REF: \store-console-frontend\sql\q5_freight_verify.ps1
+REF: \store-console-frontend\sql\q5_region_probe.ps1
+REF: \store-console-frontend\sql\q5_verify.ps1
+REF: \store-console-frontend\sql\q6_region_data_probe.ps1
+REF: \store-console-frontend\sql\q7_region_probe.ps1
+REF: \store-console-frontend\sql\q7_verify.ps1
+REF: \store-console-frontend\sql\q8_probe.ps1
+REF: \store-console-frontend\sql\r2_replace.ps1
+REF: \store-console-frontend\sql\r3b_retry.ps1
+REF: \store-console-frontend\sql\r3_rename.ps1
+REF: \store-console-frontend\sql\r5b_db.ps1
+REF: \store-console-frontend\sql\r5c_db.ps1
+REF: \store-console-frontend\sql\r5_db.ps1
+REF: \store-console-frontend\sql\r6_final.ps1
+REF: \store-console-frontend\sql\rebuild_restart.ps1
+REF: \store-console-frontend\sql\reset_pwd.ps1
+REF: \store-console-frontend\sql\s1_probe.ps1
+REF: \store-console-frontend\src-tauri\Cargo.toml
+REF: \store-console-frontend\src-tauri\tauri.conf.json
+REF-FILES: 54
+PROC pid=29496 name=node.exe cmd=node   "D:\go_work\simple-admin\store-console-frontend\node_modules\.bin\\..\vite\bin\vite.js" 
+PROC pid=31136 name=node.exe cmd=node   "D:\go_work\simple-admin\store-console-frontend\node_modules\.bin\\..\vite\bin\vite.js" 
+PROC pid=15764 name=node.exe cmd=node   "D:\go_work\simple-admin\store-console-frontend\node_modules\.bin\\..\vite\bin\vite.js" 
+PROC pid=29960 name=powershell.exe cmd="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File D:\go_work\simple-admin\store-console-frontend\sql\s1_probe.ps1
+PORT5173 pid=29496

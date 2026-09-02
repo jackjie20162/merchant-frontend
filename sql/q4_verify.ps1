@@ -1,5 +1,5 @@
 # q4 verify: vite transforms finance pages (ASCII only)
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_q4verify.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_q4verify.txt'
 '' | Out-File $out -Encoding UTF8
 
 foreach ($p in @('/src/views/finance/Bill.vue', '/src/views/finance/Withdraw.vue', '/src/api/finance.js', '/src/router/index.js', '/src/views/Layout.vue')) {

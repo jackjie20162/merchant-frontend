@@ -1,5 +1,5 @@
 # probe region data source in php and frontend (ASCII only)
-$out = 'D:\go_work\simple-admin\store-console-frontend\sql\dbg_region_data.txt'
+$out = 'D:\go_work\simple-admin\merchant-frontend\sql\dbg_region_data.txt'
 '' | Out-File $out -Encoding UTF8
 
 # find php source dir
@@ -23,7 +23,7 @@ if ($phpDir) {
 }
 
 # check frontend for any region json
-$feDir = 'D:\go_work\simple-admin\store-console-frontend'
+$feDir = 'D:\go_work\simple-admin\merchant-frontend'
 if (Test-Path $feDir) {
     $feFiles = Get-ChildItem $feDir -Recurse -File | Where-Object { $_.Name -match 'region|city|area' -and $_.Extension -in @('.js','.json') } | Select-Object -First 20
     foreach ($f in $feFiles) {

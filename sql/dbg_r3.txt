@@ -1,0 +1,36 @@
+﻿TOPDIR: wanshop
+TOPDIR: wanshop-api
+TOPDIR: wanshop-app
+TOPDIR: wanshop-rpc
+DIR: wanshop -> zzhshopR2
+Rename-Item : 对路径“D:\go_work\simple-admin\wanshop-api”的访问被拒绝。
+所在位置 D:\go_work\simple-admin\store-console-frontend\sql\r3_rename.ps1:29 字符: 9
++         Rename-Item -Path $src -NewName $t[1]
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (D:\go_work\simple-admin\wanshop-api:String) [Rename-Item], IOException
+    + FullyQualifiedErrorId : RenameItemIOError,Microsoft.PowerShell.Commands.RenameItemCommand
+ 
+DIR: wanshop-api -> zzhshopR2-api
+DIR: wanshop-rpc -> zzhshopR2-rpc
+DIR: wanshop-app -> zzhshopR2-app
+Rename-Item : 对路径“D:\go_work\simple-admin\simple-admin-vben5-ui-main\apps\simple-admin-core\src\plugin\wanshop”的访问被拒绝。
+所在位置 D:\go_work\simple-admin\store-console-frontend\sql\r3_rename.ps1:39 字符: 5
++     Rename-Item -Path $plg -NewName 'zzhshopR2'
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (D:\go_work\simp...\plugin\wanshop:String) [Rename-Item], IOException
+    + FullyQualifiedErrorId : RenameItemIOError,Microsoft.PowerShell.Commands.RenameItemCommand
+ 
+DIR: plugin\wanshop -> plugin\zzhshopR2
+SCAN-MISSING: D:\go_work\simple-admin\zzhshopR2-api
+RENAMED: \simple-admin-vben5-ui-main\apps\simple-admin-core\src\plugin\wanshop\api\model\wanshopModel.ts -> zzhshopR2Model.ts
+Rename-Item : 对路径“D:\go_work\simple-admin\simple-admin-vben5-ui-main\apps\simple-admin-core\src\plugin\wanshop”的访问被拒绝。
+所在位置 D:\go_work\simple-admin\store-console-frontend\sql\r3_rename.ps1:66 字符: 9
++         Rename-Item -LiteralPath $p -NewName $newName
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (D:\go_work\simp...\plugin\wanshop:String) [Rename-Item], IOException
+    + FullyQualifiedErrorId : RenameItemIOError,Microsoft.PowerShell.Commands.RenameItemCommand
+ 
+RENAMED: \simple-admin-vben5-ui-main\apps\simple-admin-core\src\plugin\wanshop -> zzhshopR2
+TOTAL RENAMED: 2
+LEFT: D:\go_work\simple-admin\simple-admin-vben5-ui-main\apps\simple-admin-core\src\plugin\wanshop
+RENAME-DONE

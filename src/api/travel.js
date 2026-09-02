@@ -28,11 +28,7 @@ function travelHeaders() {
 }
 
 export async function travelRequest(path, { method = 'GET', body } = {}) {
-  const response = await fetch(`${TRAVEL_API_BASE}${path}`, {
-    method,
-    headers: travelHeaders(),
-    body: body === undefined ? undefined : JSON.stringify(body),
-  })
+  const response = await fetch(`${TRAVEL_API_BASE}${path}`, { method, headers: travelHeaders(), body: body === undefined ? undefined : JSON.stringify(body) })
   if (response.status === 401) throw new Error('旅游服务认证已失效')
   let result
   try { result = await response.json() } catch { throw new Error(`旅游服务响应解析失败(HTTP ${response.status})`) }
@@ -45,11 +41,9 @@ export const listTravelProducts = (params = {}) => {
   Object.entries(params).forEach(([key, value]) => { if (value !== undefined && value !== '') query.set(key, value) })
   return travelRequest(`/api/travel/products${query.toString() ? `?${query}` : ''}`)
 }
-
 export const getTravelProduct = (id) => travelRequest(`/api/travel/products/${id}`)
-
 export const checkTravelInventory = (body) => travelRequest('/api/travel/inventory/check', { method: 'POST', body })
-
 export const createTravelOrder = (body) => travelRequest('/api/travel/orders', { method: 'POST', body })
-
 export const getTravelOrder = (orderNo) => travelRequest(`/api/travel/orders/${encodeURIComponent(orderNo)}`)
+export const createTravelPayment = (body) => travelRequest('/api/travel/payments', { method: 'POST', body })
+export const getTravelPayment = (paymentNo) => travelRequest(`/api/travel/payments/${encodeURIComponent(paymentNo)}`)
